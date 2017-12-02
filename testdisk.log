@@ -1,0 +1,608 @@
+
+
+Sat Dec  2 17:18:54 2017
+Command line: TestDisk
+
+TestDisk 7.0, Data Recovery Utility, April 2015
+Christophe GRENIER <grenier@cgsecurity.org>
+http://www.cgsecurity.org
+OS: Linux, kernel 4.13.0-kali1-amd64 (#1 SMP Debian 4.13.10-1kali2 (2017-11-08)) x86_64
+Compiler: GCC 6.3
+ext2fs lib: 1.43.7, ntfs lib: libntfs-3g, reiserfs lib: none, ewf lib: none, curses lib: ncurses 6.0
+/dev/sda: LBA, HPA, LBA48, DCO support
+/dev/sda: size       625142448 sectors
+/dev/sda: user_max   625142448 sectors
+/dev/sda: native_max 625142448 sectors
+/dev/sda: dco        625142448 sectors
+Warning: can't get size for Disk /dev/mapper/control - 0 B - 0 sectors, sector size=512
+Hard disk list
+Disk /dev/sda - 320 GB / 298 GiB - CHS 38913 255 63, sector size=512 - WDC WD3200BEKT-08PVMT1, S/N:WD-WX31A3111632, FW:02.01A02
+
+Partition table type (auto): Intel
+Disk /dev/sda - 320 GB / 298 GiB - WDC WD3200BEKT-08PVMT1
+Partition table type: Intel
+
+Analyse Disk /dev/sda - 320 GB / 298 GiB - CHS 38913 255 63
+Geometry from i386 MBR: head=255 sector=63
+NTFS at 0/32/33
+FAT32 at 31111/94/24
+Info: size boot_sector 125337600, partition 125337600
+FAT1 : 32-15328
+FAT2 : 15329-30625
+start_rootdir : 30626 root cluster : 2
+Data : 30626-125337569
+sectors : 125337600
+cluster_size : 64
+no_of_cluster : 1957921 (2 - 1957922)
+fat_length 15297 calculated 15297
+set_FAT_info: name from BS used
+check_part_i386 failed for partition type 82
+get_geometry_from_list_part_aux head=255 nbr=2
+get_geometry_from_list_part_aux head=8 nbr=1
+get_geometry_from_list_part_aux head=255 nbr=2
+Current partition structure:
+ 1 P HPFS - NTFS              0  32 33 10443  85 10  167770112
+ 2 E extended             10443 117 41 38913  70  5  457367554
+No partition is bootable
+ 5 L Linux                10443 117 43 15306 101  2   78123047
+   X extended             31111   0  1 38913  70  5  125343545
+ 6 L FAT32                31111  94 24 38913  70  5  125337600
+   X extended             22601   0  1 30138 200  4  121094509
+Logical partition must not be bootable
+ 7 L Linux                22601  12  4 30138 200  4  121093750
+   X extended             30625   6 38 31110 251 53    7806976
+ 8 L Linux Swap           30625  39  7 31110 251 53    7804928
+ 8 L Linux Swap           30625  39  7 31110 251 53    7804928
+   X extended             15306 101  3 22600 219 61  117185603
+ 9 L Linux                15306 132 59 22600 219 61  117183594
+   X extended             30138 200  5 30625   6 37    7811466
+10 L Linux Swap           30138 206 21 30625   6 37    7811072
+
+search_part()
+Disk /dev/sda - 320 GB / 298 GiB - CHS 38913 255 63
+NTFS at 0/32/33
+filesystem size           167770112
+sectors_per_cluster       8
+mft_lcn                   786432
+mftmirr_lcn               16
+clusters_per_mft_record   -10
+clusters_per_index_record 1
+     HPFS - NTFS              0  32 33 10443  85 10  167770112
+     NTFS, blocksize=4096, 85 GB / 79 GiB
+
+recover_EXT2: s_block_group_nr=0/298, s_mnt_count=142/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8208
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 9764864
+recover_EXT2: part_size 78118912
+     Linux                10443 117 43 15306  35 25   78118912
+     ext3 blocksize=4096 Large_file Sparse_SB Recover, 39 GB / 37 GiB
+
+recover_EXT2: s_block_group_nr=0/447, s_mnt_count=22/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8176
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 14647949
+recover_EXT2: part_size 117183592
+     Linux                15306 132 59 22600 219 59  117183592
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 59 GB / 55 GiB
+
+recover_EXT2: s_block_group_nr=0/461, s_mnt_count=144/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 15136718
+recover_EXT2: part_size 121093744
+     Linux                22601  12  4 30138 199 61  121093744
+     ext3 blocksize=4096 Large_file Sparse_SB, 61 GB / 57 GiB
+     Linux Swap           30138 206 21 30625   6 21    7811056
+     SWAP2 version 1, pagesize=4096, 3999 MB / 3813 MiB
+set_FAT_info: name from BS used
+FAT32 at 31111/94/24
+FAT1 : 32-15328
+FAT2 : 15329-30625
+start_rootdir : 30626 root cluster : 2
+Data : 30626-125337569
+sectors : 125337600
+cluster_size : 64
+no_of_cluster : 1957921 (2 - 1957922)
+fat_length 15297 calculated 15297
+set_FAT_info: name from BS used
+
+FAT32 at 31111/94/24
+     FAT32 LBA            31111  94 24 38913  70  5  125337600
+     FAT32, blocksize=32768, 64 GB / 59 GiB
+
+Results
+     HPFS - NTFS              0  32 33 10443  85 10  167770112
+     NTFS, blocksize=4096, 85 GB / 79 GiB
+     Linux                10443 117 43 15306  35 25   78118912
+     ext3 blocksize=4096 Large_file Sparse_SB Recover, 39 GB / 37 GiB
+     Linux                15306 132 59 22600 234 34  117184512
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 59 GB / 55 GiB
+     Linux                22601  12  4 30138 206 20  121094144
+     ext3 blocksize=4096 Large_file Sparse_SB, 62 GB / 57 GiB
+     Linux Swap           30138 206 21 30625   6 37    7811072
+     SWAP2 version 1, pagesize=4096, 3999 MB / 3814 MiB
+     FAT32 LBA            31111  94 24 38913  70  5  125337600
+     FAT32, blocksize=32768, 64 GB / 59 GiB
+
+Hint for advanced users. dmsetup may be used if you prefer to avoid to rewrite the partition table for the moment:
+echo "0 167770112 linear /dev/sda 2048" | dmsetup create test0
+echo "0 78118912 linear /dev/sda 167774208" | dmsetup create test1
+echo "0 117184512 linear /dev/sda 245899264" | dmsetup create test2
+echo "0 121094144 linear /dev/sda 363085824" | dmsetup create test3
+echo "0 7811072 linear /dev/sda 484179968" | dmsetup create test4
+echo "0 125337600 linear /dev/sda 499804160" | dmsetup create test5
+
+interface_write()
+ 
+No partition found or selected for recovery
+simulate write!
+
+write_mbr_i386: starting...
+write_all_log_i386: starting...
+No extended partition
+
+Analyse Disk /dev/sda - 320 GB / 298 GiB - CHS 38913 255 63
+Geometry from i386 MBR: head=255 sector=63
+NTFS at 0/32/33
+FAT32 at 31111/94/24
+Info: size boot_sector 125337600, partition 125337600
+FAT1 : 32-15328
+FAT2 : 15329-30625
+start_rootdir : 30626 root cluster : 2
+Data : 30626-125337569
+sectors : 125337600
+cluster_size : 64
+no_of_cluster : 1957921 (2 - 1957922)
+fat_length 15297 calculated 15297
+set_FAT_info: name from BS used
+check_part_i386 failed for partition type 82
+get_geometry_from_list_part_aux head=255 nbr=2
+get_geometry_from_list_part_aux head=8 nbr=1
+get_geometry_from_list_part_aux head=255 nbr=2
+Current partition structure:
+ 1 P HPFS - NTFS              0  32 33 10443  85 10  167770112
+ 2 E extended             10443 117 41 38913  70  5  457367554
+No partition is bootable
+ 5 L Linux                10443 117 43 15306 101  2   78123047
+   X extended             31111   0  1 38913  70  5  125343545
+ 6 L FAT32                31111  94 24 38913  70  5  125337600
+   X extended             22601   0  1 30138 200  4  121094509
+Logical partition must not be bootable
+ 7 L Linux                22601  12  4 30138 200  4  121093750
+   X extended             30625   6 38 31110 251 53    7806976
+ 8 L Linux Swap           30625  39  7 31110 251 53    7804928
+ 8 L Linux Swap           30625  39  7 31110 251 53    7804928
+   X extended             15306 101  3 22600 219 61  117185603
+ 9 L Linux                15306 132 59 22600 219 61  117183594
+   X extended             30138 200  5 30625   6 37    7811466
+10 L Linux Swap           30138 206 21 30625   6 37    7811072
+
+search_part()
+Disk /dev/sda - 320 GB / 298 GiB - CHS 38913 255 63
+NTFS at 0/32/33
+filesystem size           167770112
+sectors_per_cluster       8
+mft_lcn                   786432
+mftmirr_lcn               16
+clusters_per_mft_record   -10
+clusters_per_index_record 1
+     HPFS - NTFS              0  32 33 10443  85 10  167770112
+     NTFS, blocksize=4096, 85 GB / 79 GiB
+
+recover_EXT2: s_block_group_nr=0/298, s_mnt_count=142/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8208
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 9764864
+recover_EXT2: part_size 78118912
+     Linux                10443 117 43 15306  35 25   78118912
+     ext3 blocksize=4096 Large_file Sparse_SB Recover, 39 GB / 37 GiB
+
+recover_EXT2: s_block_group_nr=0/447, s_mnt_count=22/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8176
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 14647949
+recover_EXT2: part_size 117183592
+     Linux                15306 132 59 22600 219 59  117183592
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 59 GB / 55 GiB
+
+recover_EXT2: s_block_group_nr=0/461, s_mnt_count=144/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 15136718
+recover_EXT2: part_size 121093744
+     Linux                22601  12  4 30138 199 61  121093744
+     ext3 blocksize=4096 Large_file Sparse_SB, 61 GB / 57 GiB
+     Linux Swap           30138 206 21 30625   6 21    7811056
+     SWAP2 version 1, pagesize=4096, 3999 MB / 3813 MiB
+set_FAT_info: name from BS used
+FAT32 at 31111/94/24
+FAT1 : 32-15328
+FAT2 : 15329-30625
+start_rootdir : 30626 root cluster : 2
+Data : 30626-125337569
+sectors : 125337600
+cluster_size : 64
+no_of_cluster : 1957921 (2 - 1957922)
+fat_length 15297 calculated 15297
+set_FAT_info: name from BS used
+
+FAT32 at 31111/94/24
+     FAT32 LBA            31111  94 24 38913  70  5  125337600
+     FAT32, blocksize=32768, 64 GB / 59 GiB
+
+Results
+     HPFS - NTFS              0  32 33 10443  85 10  167770112
+     NTFS, blocksize=4096, 85 GB / 79 GiB
+     Linux                10443 117 43 15306  35 25   78118912
+     ext3 blocksize=4096 Large_file Sparse_SB Recover, 39 GB / 37 GiB
+     Linux                15306 132 59 22600 234 34  117184512
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 59 GB / 55 GiB
+     Linux                22601  12  4 30138 206 20  121094144
+     ext3 blocksize=4096 Large_file Sparse_SB, 62 GB / 57 GiB
+     Linux Swap           30138 206 21 30625   6 37    7811072
+     SWAP2 version 1, pagesize=4096, 3999 MB / 3814 MiB
+     FAT32 LBA            31111  94 24 38913  70  5  125337600
+     FAT32, blocksize=32768, 64 GB / 59 GiB
+
+Hint for advanced users. dmsetup may be used if you prefer to avoid to rewrite the partition table for the moment:
+echo "0 167770112 linear /dev/sda 2048" | dmsetup create test0
+echo "0 78118912 linear /dev/sda 167774208" | dmsetup create test1
+echo "0 117184512 linear /dev/sda 245899264" | dmsetup create test2
+echo "0 121094144 linear /dev/sda 363085824" | dmsetup create test3
+echo "0 7811072 linear /dev/sda 484179968" | dmsetup create test4
+echo "0 125337600 linear /dev/sda 499804160" | dmsetup create test5
+
+
+dir_partition inode=2
+     Linux                15306 132 59 22600 234 34  117184512
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 59 GB / 55 GiB
+Directory /
+       2 drwxr-xr-x     0      0      4096 31-Oct-2017 08:29 .
+       2 drwxr-xr-x     0      0      4096 31-Oct-2017 08:29 ..
+      11 drwx------     0      0     16384 24-Oct-2017 22:07 lost+found
+ 1046529 drwxr-xr-x     0      0     12288  2-Dec-2017 09:28 etc
+ 1831425 drwxr-xr-x     0      0      4096 24-Oct-2017 23:17 media
+      12 -rw-r--r--     0      0         0 17-Sep-2017 08:28 0
+ 3139585 drwxr-xr-x     0      0      4096 21-Nov-2017 15:04 bin
+ 1962241 drwxr-xr-x     0      0      4096 21-Nov-2017 15:12 boot
+ 2093057 drwxr-xr-x     0      0      4096 24-Oct-2017 22:08 dev
+ 2877953 drwxr-xr-x     0      0      4096  4-Sep-2017 22:51 home
+      15 lrwxrwxrwx     0      0        34 31-Oct-2017 08:29 initrd.img
+      14 lrwxrwxrwx     0      0        34 24-Oct-2017 22:08 initrd.img.old
+ 3008769 drwxr-xr-x     0      0      4096 15-Nov-2017 09:34 lib
+ 2354689 drwxr-xr-x     0      0      4096 24-Oct-2017 22:10 lib64
+ 2485505 drwxr-xr-x     0      0      4096 17-Sep-2017 08:03 mnt
+ 1308161 drwxr-xr-x     0      0      4096 15-Nov-2017 14:50 opt
+ 2616321 drwxr-xr-x     0      0      4096  4-Sep-2017 22:51 proc
+ 2747137 drwxr-xr-x     0      0      4096  2-Dec-2017 17:18 root
+  261633 drwxr-xr-x     0      0      4096 24-Oct-2017 23:11 run
+ 1569793 drwxr-xr-x     0      0     12288 21-Nov-2017 14:59 sbin
+ 3270401 drwxr-xr-x     0      0      4096 24-Oct-2017 22:10 srv
+ 3401217 drwxr-xr-x     0      0      4096  4-Sep-2017 22:51 sys
+ 2223873 drwxrwxrwt     0      0      4096  2-Dec-2017 17:18 tmp
+ 1177345 drwxr-xr-x     0      0      4096 26-Oct-2017 16:06 usr
+  392449 drwxr-xr-x     0      0      4096 24-Oct-2017 22:53 var
+      17 lrwxrwxrwx     0      0        31 31-Oct-2017 08:29 vmlinuz
+      16 lrwxrwxrwx     0      0        31 24-Oct-2017 22:53 vmlinuz.old
+  523265 drwx------     0      0      4096 24-Oct-2017 22:53 .cache
+X     15 lrwxrwxrwx     0      0        34 31-Oct-2017 08:29 initrd.img.258071
+
+dir_partition inode=2877953
+     Linux                15306 132 59 22600 234 34  117184512
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 59 GB / 55 GiB
+Directory /home
+ 2877953 drwxr-xr-x     0      0      4096  4-Sep-2017 22:51 .
+       2 drwxr-xr-x     0      0      4096 31-Oct-2017 08:29 ..
+Directory /
+       2 drwxr-xr-x     0      0      4096 31-Oct-2017 08:29 .
+       2 drwxr-xr-x     0      0      4096 31-Oct-2017 08:29 ..
+      11 drwx------     0      0     16384 24-Oct-2017 22:07 lost+found
+ 1046529 drwxr-xr-x     0      0     12288  2-Dec-2017 09:28 etc
+ 1831425 drwxr-xr-x     0      0      4096 24-Oct-2017 23:17 media
+      12 -rw-r--r--     0      0         0 17-Sep-2017 08:28 0
+ 3139585 drwxr-xr-x     0      0      4096 21-Nov-2017 15:04 bin
+ 1962241 drwxr-xr-x     0      0      4096 21-Nov-2017 15:12 boot
+ 2093057 drwxr-xr-x     0      0      4096 24-Oct-2017 22:08 dev
+ 2877953 drwxr-xr-x     0      0      4096  4-Sep-2017 22:51 home
+      15 lrwxrwxrwx     0      0        34 31-Oct-2017 08:29 initrd.img
+      14 lrwxrwxrwx     0      0        34 24-Oct-2017 22:08 initrd.img.old
+ 3008769 drwxr-xr-x     0      0      4096 15-Nov-2017 09:34 lib
+ 2354689 drwxr-xr-x     0      0      4096 24-Oct-2017 22:10 lib64
+ 2485505 drwxr-xr-x     0      0      4096 17-Sep-2017 08:03 mnt
+ 1308161 drwxr-xr-x     0      0      4096 15-Nov-2017 14:50 opt
+ 2616321 drwxr-xr-x     0      0      4096  4-Sep-2017 22:51 proc
+ 2747137 drwxr-xr-x     0      0      4096  2-Dec-2017 17:18 root
+  261633 drwxr-xr-x     0      0      4096 24-Oct-2017 23:11 run
+ 1569793 drwxr-xr-x     0      0     12288 21-Nov-2017 14:59 sbin
+ 3270401 drwxr-xr-x     0      0      4096 24-Oct-2017 22:10 srv
+ 3401217 drwxr-xr-x     0      0      4096  4-Sep-2017 22:51 sys
+ 2223873 drwxrwxrwt     0      0      4096  2-Dec-2017 17:18 tmp
+ 1177345 drwxr-xr-x     0      0      4096 26-Oct-2017 16:06 usr
+  392449 drwxr-xr-x     0      0      4096 24-Oct-2017 22:53 var
+      17 lrwxrwxrwx     0      0        31 31-Oct-2017 08:29 vmlinuz
+      16 lrwxrwxrwx     0      0        31 24-Oct-2017 22:53 vmlinuz.old
+  523265 drwx------     0      0      4096 24-Oct-2017 22:53 .cache
+X     15 lrwxrwxrwx     0      0        34 31-Oct-2017 08:29 initrd.img.258071
+
+dir_partition inode=11
+     Linux                15306 132 59 22600 234 34  117184512
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 59 GB / 55 GiB
+Directory /lost+found
+      11 drwx------     0      0     16384 24-Oct-2017 22:07 .
+       2 drwxr-xr-x     0      0      4096 31-Oct-2017 08:29 ..
+Directory /
+       2 drwxr-xr-x     0      0      4096 31-Oct-2017 08:29 .
+       2 drwxr-xr-x     0      0      4096 31-Oct-2017 08:29 ..
+      11 drwx------     0      0     16384 24-Oct-2017 22:07 lost+found
+ 1046529 drwxr-xr-x     0      0     12288  2-Dec-2017 09:28 etc
+ 1831425 drwxr-xr-x     0      0      4096 24-Oct-2017 23:17 media
+      12 -rw-r--r--     0      0         0 17-Sep-2017 08:28 0
+ 3139585 drwxr-xr-x     0      0      4096 21-Nov-2017 15:04 bin
+ 1962241 drwxr-xr-x     0      0      4096 21-Nov-2017 15:12 boot
+ 2093057 drwxr-xr-x     0      0      4096 24-Oct-2017 22:08 dev
+ 2877953 drwxr-xr-x     0      0      4096  4-Sep-2017 22:51 home
+      15 lrwxrwxrwx     0      0        34 31-Oct-2017 08:29 initrd.img
+      14 lrwxrwxrwx     0      0        34 24-Oct-2017 22:08 initrd.img.old
+ 3008769 drwxr-xr-x     0      0      4096 15-Nov-2017 09:34 lib
+ 2354689 drwxr-xr-x     0      0      4096 24-Oct-2017 22:10 lib64
+ 2485505 drwxr-xr-x     0      0      4096 17-Sep-2017 08:03 mnt
+ 1308161 drwxr-xr-x     0      0      4096 15-Nov-2017 14:50 opt
+ 2616321 drwxr-xr-x     0      0      4096  4-Sep-2017 22:51 proc
+ 2747137 drwxr-xr-x     0      0      4096  2-Dec-2017 17:18 root
+  261633 drwxr-xr-x     0      0      4096 24-Oct-2017 23:11 run
+ 1569793 drwxr-xr-x     0      0     12288 21-Nov-2017 14:59 sbin
+ 3270401 drwxr-xr-x     0      0      4096 24-Oct-2017 22:10 srv
+ 3401217 drwxr-xr-x     0      0      4096  4-Sep-2017 22:51 sys
+ 2223873 drwxrwxrwt     0      0      4096  2-Dec-2017 17:18 tmp
+ 1177345 drwxr-xr-x     0      0      4096 26-Oct-2017 16:06 usr
+  392449 drwxr-xr-x     0      0      4096 24-Oct-2017 22:53 var
+      17 lrwxrwxrwx     0      0        31 31-Oct-2017 08:29 vmlinuz
+      16 lrwxrwxrwx     0      0        31 24-Oct-2017 22:53 vmlinuz.old
+  523265 drwx------     0      0      4096 24-Oct-2017 22:53 .cache
+X     15 lrwxrwxrwx     0      0        34 31-Oct-2017 08:29 initrd.img.258071
+
+dir_partition inode=1831425
+     Linux                15306 132 59 22600 234 34  117184512
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 59 GB / 55 GiB
+Directory /media
+ 1831425 drwxr-xr-x     0      0      4096 24-Oct-2017 23:17 .
+       2 drwxr-xr-x     0      0      4096 31-Oct-2017 08:29 ..
+ 1831426 lrwxrwxrwx     0      0         6 24-Oct-2017 22:07 cdrom
+ 1831427 drwxr-xr-x     0      0      4096 24-Oct-2017 22:07 cdrom0
+ 1873988 drwxr-x---     0      0      4096  2-Dec-2017 09:12 root
+
+dir_partition inode=1873988
+     Linux                15306 132 59 22600 234 34  117184512
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 59 GB / 55 GiB
+Directory /media/root
+ 1873988 drwxr-x---     0      0      4096  2-Dec-2017 09:12 .
+ 1831425 drwxr-xr-x     0      0      4096 24-Oct-2017 23:17 ..
+ 1839989 drwx------     0      0      4096  2-Dec-2017 09:12 A897-EC96
+X1836343 drwxr-sr-x     0     50      4096 29-Nov-2017 18:01 ae6f090d-5f44-4f42-a768-7ff7a6dc41a7
+X1836344 -rw-r--r--     0     50    101966 29-Nov-2017 18:01 A897-EC96
+Directory /media
+ 1831425 drwxr-xr-x     0      0      4096 24-Oct-2017 23:17 .
+       2 drwxr-xr-x     0      0      4096 31-Oct-2017 08:29 ..
+ 1831426 lrwxrwxrwx     0      0         6 24-Oct-2017 22:07 cdrom
+ 1831427 drwxr-xr-x     0      0      4096 24-Oct-2017 22:07 cdrom0
+ 1873988 drwxr-x---     0      0      4096  2-Dec-2017 09:12 root
+Directory /
+       2 drwxr-xr-x     0      0      4096 31-Oct-2017 08:29 .
+       2 drwxr-xr-x     0      0      4096 31-Oct-2017 08:29 ..
+      11 drwx------     0      0     16384 24-Oct-2017 22:07 lost+found
+ 1046529 drwxr-xr-x     0      0     12288  2-Dec-2017 09:28 etc
+ 1831425 drwxr-xr-x     0      0      4096 24-Oct-2017 23:17 media
+      12 -rw-r--r--     0      0         0 17-Sep-2017 08:28 0
+ 3139585 drwxr-xr-x     0      0      4096 21-Nov-2017 15:04 bin
+ 1962241 drwxr-xr-x     0      0      4096 21-Nov-2017 15:12 boot
+ 2093057 drwxr-xr-x     0      0      4096 24-Oct-2017 22:08 dev
+ 2877953 drwxr-xr-x     0      0      4096  4-Sep-2017 22:51 home
+      15 lrwxrwxrwx     0      0        34 31-Oct-2017 08:29 initrd.img
+      14 lrwxrwxrwx     0      0        34 24-Oct-2017 22:08 initrd.img.old
+ 3008769 drwxr-xr-x     0      0      4096 15-Nov-2017 09:34 lib
+ 2354689 drwxr-xr-x     0      0      4096 24-Oct-2017 22:10 lib64
+ 2485505 drwxr-xr-x     0      0      4096 17-Sep-2017 08:03 mnt
+ 1308161 drwxr-xr-x     0      0      4096 15-Nov-2017 14:50 opt
+ 2616321 drwxr-xr-x     0      0      4096  4-Sep-2017 22:51 proc
+ 2747137 drwxr-xr-x     0      0      4096  2-Dec-2017 17:18 root
+  261633 drwxr-xr-x     0      0      4096 24-Oct-2017 23:11 run
+ 1569793 drwxr-xr-x     0      0     12288 21-Nov-2017 14:59 sbin
+ 3270401 drwxr-xr-x     0      0      4096 24-Oct-2017 22:10 srv
+ 3401217 drwxr-xr-x     0      0      4096  4-Sep-2017 22:51 sys
+ 2223873 drwxrwxrwt     0      0      4096  2-Dec-2017 17:18 tmp
+ 1177345 drwxr-xr-x     0      0      4096 26-Oct-2017 16:06 usr
+  392449 drwxr-xr-x     0      0      4096 24-Oct-2017 22:53 var
+      17 lrwxrwxrwx     0      0        31 31-Oct-2017 08:29 vmlinuz
+      16 lrwxrwxrwx     0      0        31 24-Oct-2017 22:53 vmlinuz.old
+  523265 drwx------     0      0      4096 24-Oct-2017 22:53 .cache
+X     15 lrwxrwxrwx     0      0        34 31-Oct-2017 08:29 initrd.img.258071
+
+interface_write()
+ 
+No partition found or selected for recovery
+
+search_part()
+Disk /dev/sda - 320 GB / 298 GiB - CHS 38913 255 63
+NTFS at 0/32/33
+filesystem size           167770112
+sectors_per_cluster       8
+mft_lcn                   786432
+mftmirr_lcn               16
+clusters_per_mft_record   -10
+clusters_per_index_record 1
+     HPFS - NTFS              0  32 33 10443  85 10  167770112
+     NTFS, blocksize=4096, 85 GB / 79 GiB
+
+recover_EXT2: s_block_group_nr=0/298, s_mnt_count=142/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8208
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 9764864
+recover_EXT2: part_size 78118912
+     Linux                10443 117 43 15306  35 25   78118912
+     ext3 blocksize=4096 Large_file Sparse_SB Recover, 39 GB / 37 GiB
+
+recover_EXT2: s_block_group_nr=0/447, s_mnt_count=22/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8176
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 14647949
+recover_EXT2: part_size 117183592
+     Linux                15306 132 59 22600 219 59  117183592
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 59 GB / 55 GiB
+
+recover_EXT2: s_block_group_nr=0/461, s_mnt_count=144/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 15136718
+recover_EXT2: part_size 121093744
+     Linux                22601  12  4 30138 199 61  121093744
+     ext3 blocksize=4096 Large_file Sparse_SB, 61 GB / 57 GiB
+     Linux Swap           30138 206 21 30625   6 21    7811056
+     SWAP2 version 1, pagesize=4096, 3999 MB / 3813 MiB
+set_FAT_info: name from BS used
+FAT32 at 31111/94/24
+FAT1 : 32-15328
+FAT2 : 15329-30625
+start_rootdir : 30626 root cluster : 2
+Data : 30626-125337569
+sectors : 125337600
+cluster_size : 64
+no_of_cluster : 1957921 (2 - 1957922)
+fat_length 15297 calculated 15297
+set_FAT_info: name from BS used
+
+FAT32 at 31111/94/24
+     FAT32 LBA            31111  94 24 38913  70  5  125337600
+     FAT32, blocksize=32768, 64 GB / 59 GiB
+Search for partition aborted
+
+Results
+     HPFS - NTFS              0  32 33 10443  85 10  167770112
+     NTFS, blocksize=4096, 85 GB / 79 GiB
+     Linux                10443 117 43 15306  35 25   78118912
+     ext3 blocksize=4096 Large_file Sparse_SB Recover, 39 GB / 37 GiB
+     Linux                15306 132 59 22600 234 34  117184512
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 59 GB / 55 GiB
+     Linux                22601  12  4 30138 206 20  121094144
+     ext3 blocksize=4096 Large_file Sparse_SB, 62 GB / 57 GiB
+     Linux Swap           30138 206 21 30625   6 37    7811072
+     SWAP2 version 1, pagesize=4096, 3999 MB / 3814 MiB
+     FAT32 LBA            31111  94 24 38913  70  5  125337600
+     FAT32, blocksize=32768, 64 GB / 59 GiB
+
+Hint for advanced users. dmsetup may be used if you prefer to avoid to rewrite the partition table for the moment:
+echo "0 167770112 linear /dev/sda 2048" | dmsetup create test0
+echo "0 78118912 linear /dev/sda 167774208" | dmsetup create test1
+echo "0 117184512 linear /dev/sda 245899264" | dmsetup create test2
+echo "0 121094144 linear /dev/sda 363085824" | dmsetup create test3
+echo "0 7811072 linear /dev/sda 484179968" | dmsetup create test4
+echo "0 125337600 linear /dev/sda 499804160" | dmsetup create test5
+
+interface_write()
+ 
+No partition found or selected for recovery
+simulate write!
+
+write_mbr_i386: starting...
+write_all_log_i386: starting...
+No extended partition
+
+Analyse Disk /dev/sda - 320 GB / 298 GiB - CHS 38913 255 63
+Geometry from i386 MBR: head=255 sector=63
+NTFS at 0/32/33
+FAT32 at 31111/94/24
+Info: size boot_sector 125337600, partition 125337600
+FAT1 : 32-15328
+FAT2 : 15329-30625
+start_rootdir : 30626 root cluster : 2
+Data : 30626-125337569
+sectors : 125337600
+cluster_size : 64
+no_of_cluster : 1957921 (2 - 1957922)
+fat_length 15297 calculated 15297
+set_FAT_info: name from BS used
+check_part_i386 failed for partition type 82
+get_geometry_from_list_part_aux head=255 nbr=2
+get_geometry_from_list_part_aux head=8 nbr=1
+get_geometry_from_list_part_aux head=255 nbr=2
+Current partition structure:
+ 1 P HPFS - NTFS              0  32 33 10443  85 10  167770112
+ 2 E extended             10443 117 41 38913  70  5  457367554
+No partition is bootable
+ 5 L Linux                10443 117 43 15306 101  2   78123047
+   X extended             31111   0  1 38913  70  5  125343545
+ 6 L FAT32                31111  94 24 38913  70  5  125337600
+   X extended             22601   0  1 30138 200  4  121094509
+Logical partition must not be bootable
+ 7 L Linux                22601  12  4 30138 200  4  121093750
+   X extended             30625   6 38 31110 251 53    7806976
+ 8 L Linux Swap           30625  39  7 31110 251 53    7804928
+ 8 L Linux Swap           30625  39  7 31110 251 53    7804928
+   X extended             15306 101  3 22600 219 61  117185603
+ 9 L Linux                15306 132 59 22600 219 61  117183594
+   X extended             30138 200  5 30625   6 37    7811466
+10 L Linux Swap           30138 206 21 30625   6 37    7811072
+
+search_part()
+Disk /dev/sda - 320 GB / 298 GiB - CHS 38913 255 63
+NTFS at 0/32/33
+filesystem size           167770112
+sectors_per_cluster       8
+mft_lcn                   786432
+mftmirr_lcn               16
+clusters_per_mft_record   -10
+clusters_per_index_record 1
+     HPFS - NTFS              0  32 33 10443  85 10  167770112
+     NTFS, blocksize=4096, 85 GB / 79 GiB
+
+recover_EXT2: s_block_group_nr=0/298, s_mnt_count=142/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8208
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 9764864
+recover_EXT2: part_size 78118912
+     Linux                10443 117 43 15306  35 25   78118912
+     ext3 blocksize=4096 Large_file Sparse_SB Recover, 39 GB / 37 GiB
+
+recover_EXT2: s_block_group_nr=0/447, s_mnt_count=22/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8176
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 14647949
+recover_EXT2: part_size 117183592
+     Linux                15306 132 59 22600 219 59  117183592
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 59 GB / 55 GiB
+
+recover_EXT2: s_block_group_nr=0/461, s_mnt_count=144/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 15136718
+recover_EXT2: part_size 121093744
+     Linux                22601  12  4 30138 199 61  121093744
+     ext3 blocksize=4096 Large_file Sparse_SB, 61 GB / 57 GiB
+     Linux Swap           30138 206 21 30625   6 21    7811056
+     SWAP2 version 1, pagesize=4096, 3999 MB / 3813 MiB
+set_FAT_info: name from BS used
+FAT32 at 31111/94/24
+FAT1 : 32-15328
+FAT2 : 15329-30625
+start_rootdir : 30626 root cluster : 2
+Data : 30626-125337569
+sectors : 125337600
+cluster_size : 64
+no_of_cluster : 1957921 (2 - 1957922)
+fat_length 15297 calculated 15297
+set_FAT_info: name from BS used
+
+FAT32 at 31111/94/24
+     FAT32 LBA            31111  94 24 38913  70  5  125337600
+     FAT32, blocksize=32768, 64 GB / 59 GiB
+
+Results
+     HPFS - NTFS              0  32 33 10443  85 10  167770112
+     NTFS, blocksize=4096, 85 GB / 79 GiB
+     Linux                10443 117 43 15306  35 25   78118912
+     ext3 blocksize=4096 Large_file Sparse_SB Recover, 39 GB / 37 GiB
+     Linux                15306 132 59 22600 234 34  117184512
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 59 GB / 55 GiB
+     Linux                22601  12  4 30138 206 20  121094144
+     ext3 blocksize=4096 Large_file Sparse_SB, 62 GB / 57 GiB
+     Linux Swap           30138 206 21 30625   6 37    7811072
+     SWAP2 version 1, pagesize=4096, 3999 MB / 3814 MiB
+     FAT32 LBA            31111  94 24 38913  70  5  125337600
+     FAT32, blocksize=32768, 64 GB / 59 GiB
+
+Hint for advanced users. dmsetup may be used if you prefer to avoid to rewrite the partition table for the moment:
+echo "0 167770112 linear /dev/sda 2048" | dmsetup create test0
+echo "0 78118912 linear /dev/sda 167774208" | dmsetup create test1
+echo "0 117184512 linear /dev/sda 245899264" | dmsetup create test2
+echo "0 121094144 linear /dev/sda 363085824" | dmsetup create test3
+echo "0 7811072 linear /dev/sda 484179968" | dmsetup create test4
+echo "0 125337600 linear /dev/sda 499804160" | dmsetup create test5
+SIGHUP detected! TestDisk has been killed.
