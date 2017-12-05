@@ -65,6 +65,8 @@ if filereadable(expand("~/.vimrc_background"))
 else
       " let g:solarized_termcolors=256 
       colorscheme gruvbox 
+      let g:solarized_termcolors=256 
+      colorscheme solarized
 endif
 
 set background=dark
@@ -397,6 +399,7 @@ autocmd BufReadPost *
 
 " Section Plugins {{{
 
+" FZF
 """""""""""""""""""""""""""""""""""""
 " Toggle NERDTree
 nmap <silent> <leader>k :NERDTreeToggle<cr>:NERDTreeMirrorOpen<cr>
@@ -508,9 +511,6 @@ let g:SuperTabCrMapping = 0
 
 let g:clang_library_path='/usr/lib/llvm-3.5/lib/libclang.so.1'
 
-"For youcompleteme
-
-let g:enable_ycm_at_startup = 0
 "For vim-go
 
 let g:go_highlight_functions = 1
