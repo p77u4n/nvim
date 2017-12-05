@@ -65,12 +65,6 @@ if filereadable(expand("~/.vimrc_background"))
 else
       " let g:solarized_termcolors=256 
       colorscheme gruvbox 
-<<<<<<< HEAD
-      " colorscheme solarized
-=======
-      let g:solarized_termcolors=256 
-      colorscheme solarized
->>>>>>> de30e8c5851365a1b1444b2173a90c805434915b
 endif
 
 set background=dark
