@@ -1,3 +1,5 @@
+" Combining amix vimrc and adding some additional configuration stuff for my own purposes
+
 source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/extended.vim
 
