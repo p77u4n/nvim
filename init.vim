@@ -1,4 +1,5 @@
 source ~/.config/nvim/plugins.vim
+source ~/.config/nvim/extended.vim
 
 " Section General {{{
 
@@ -62,8 +63,8 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 else
-      let g:solarized_termcolors=256 
-      colorscheme solarized
+      " let g:solarized_termcolors=256 
+      colorscheme gruvbox 
 endif
 
 set background=dark
@@ -329,6 +330,12 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
+" Useful mappings for resize split
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <Leader>> :exe "resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <Leader>< :exe "resize " . (winwidth(0) * 2/3)<CR>
+
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
@@ -390,7 +397,6 @@ autocmd BufReadPost *
 
 " Section Plugins {{{
 
-" FZF
 """""""""""""""""""""""""""""""""""""
 " Toggle NERDTree
 nmap <silent> <leader>k :NERDTreeToggle<cr>:NERDTreeMirrorOpen<cr>
@@ -409,6 +415,7 @@ map <Leader>n <plug>NERDTreeTabsToggle<CR>
 let NERDTreeDirArrowExpandable = '▷'
 let NERDTreeDirArrowCollapsible = '▼'
 
+" FZF
 let g:fzf_layout = { 'down': '~25%' }
 
 if isdirectory(".git")
@@ -501,7 +508,9 @@ let g:SuperTabCrMapping = 0
 
 let g:clang_library_path='/usr/lib/llvm-3.5/lib/libclang.so.1'
 
+"For youcompleteme
 
+let g:enable_ycm_at_startup = 0
 "For vim-go
 
 let g:go_highlight_functions = 1

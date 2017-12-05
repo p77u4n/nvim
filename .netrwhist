@@ -1,6 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/root/.config/nvim'
 let g:netrw_dirhist_2='/root/.config/nvim/plugged/vim-ragtag'
 let g:netrw_dirhist_3='/root/.config/nvim/plugged/vim-ragtag/plugin'
 let g:netrw_dirhist_4='/root/Documents/CodeDiary'
+let g:netrw_dirhist_5='/root/.tmux'
+let g:netrw_dirhist_6='/root/.config/nvim/.git'
