@@ -17,6 +17,10 @@ abbr attribuet attribute
 set nocompatible            " not compatible with vi
 set autoread                " detect when a file is changed
 
+filetype on
+filetype plugin on
+filetype indent on
+
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -48,26 +52,26 @@ set t_Co=256                " Explicitly tell vim that the terminal supports 256
 
 " switch cursor to line when in insert mode, and block when not
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-  \,sm:block-blinkwait175-blinkoff150-blinkon175
+			\,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+			\,sm:block-blinkwait175-blinkoff150-blinkon175
 
 if &term =~ '256color'
-    " disable background color erase
-    set t_ut=
+	" disable background color erase
+	set t_ut=
 endif
 
 " enable 24 bit color support if supported
 if (has('mac') && empty($TMUX) && has("termguicolors"))
-    set termguicolors
+	set termguicolors
 endif
 
 if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
+	let base16colorspace=256
+	source ~/.vimrc_background
 else
-      " let g:solarized_termcolors=256 
-      colorscheme gruvbox 
-      " colorscheme solarized
+	" let g:solarized_termcolors=256
+	colorscheme gruvbox
+	" colorscheme solarized
 endif
 
 set background=dark
@@ -82,7 +86,7 @@ endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
-set guifont=Fira\ Mono\ Medium\ 11 
+set guifont=Fira\ Mono\ Medium\ 20
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
@@ -136,7 +140,7 @@ set shiftround              " round indent to a multiple of 'shiftwidth'
 set completeopt+=longest
 
 " code folding settings
-set foldmethod=syntax       " fold based on indent
+set foldmethod=indent		" fold based on indent
 set foldlevelstart=99
 set foldnestmax=10          " deepest fold is 10 levels
 set nofoldenable            " don't fold by default
@@ -346,10 +350,10 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
+	set switchbuf=useopen,usetab,newtab
+	set stal=2
 catch
 endtry
 
@@ -357,9 +361,9 @@ set viminfo^=%
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
+	exe "normal mz"
+	%s/\s\+$//ge
+	exe "normal `z"
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
@@ -368,33 +372,33 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 """""""""""""""" Section AutoGroups {{{
 " file type specific settings
 augroup configgroup
-    autocmd!
+	autocmd!
 
-    " automatically resize panes on resize
-    autocmd VimResized * exe 'normal! \<c-w>='
-    autocmd BufWritePost .vimrc,.vimrc.local,init.vim source %
-    autocmd BufWritePost .vimrc.local source %
-    " save all files on focus lost, ignoring warnings about untitled buffers
-    autocmd FocusLost * silent! wa
+	" automatically resize panes on resize
+	autocmd VimResized * exe 'normal! \<c-w>='
+	autocmd BufWritePost .vimrc,.vimrc.local,init.vim source %
+	autocmd BufWritePost .vimrc.local source %
+	" save all files on focus lost, ignoring warnings about untitled buffers
+	autocmd FocusLost * silent! wa
 
-    " make quickfix windows take all the lower section of the screen
-    " when there are multiple windows open
-    autocmd FileType qf wincmd J
-    autocmd FileType qf nmap q :q<cr>
+	" make quickfix windows take all the lower section of the screen
+	" when there are multiple windows open
+	autocmd FileType qf wincmd J
+	autocmd FileType qf nmap q :q<cr>
 
-    autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-    let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'stylus', 'html']
+	autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+	let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'stylus', 'html']
 
-    " autocmd! BufEnter * call functions#ApplyLocalSettings(expand('<afile>:p:h'))
+	" autocmd! BufEnter * call functions#ApplyLocalSettings(expand('<afile>:p:h'))
 
-    autocmd BufNewFile,BufRead,BufWrite *.md syntax match Comment /\%^---\_.\{-}---$/
+	autocmd BufNewFile,BufRead,BufWrite *.md syntax match Comment /\%^---\_.\{-}---$/
 augroup END
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
-	 \ if line("'\"") > 0 && line("'\"") <= line("$") |
-	 \   exe "normal! g`\"" |
-	 \ endif
+			\ if line("'\"") > 0 && line("'\"") <= line("$") |
+			\   exe "normal! g`\"" |
+			\ endif
 
 " }}}
 
@@ -423,11 +427,11 @@ let NERDTreeDirArrowCollapsible = '▼'
 let g:fzf_layout = { 'down': '~25%' }
 
 if isdirectory(".git")
-    " if in a git project, use :GFiles
-    nmap <silent> <leader>t :GFiles --cached --others --exclude-standard<cr>
+	" if in a git project, use :GFiles
+	nmap <silent> <leader>t :GFiles --cached --others --exclude-standard<cr>
 else
-    " otherwise, use :FZF
-    nmap <silent> <leader>t :FZF<cr>
+	" otherwise, use :FZF
+	nmap <silent> <leader>t :FZF<cr>
 endif
 
 nmap <silent> <leader>r :Buffers<cr>
@@ -443,31 +447,31 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 nnoremap <silent> <Leader>C :call fzf#run({
-\   'source':
-\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
-\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
-\   'sink':    'colo',
-\   'options': '+m',
-\   'left':    30
-\ })<CR>
+			\   'source':
+			\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
+			\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+			\   'sink':    'colo',
+			\   'options': '+m',
+			\   'left':    30
+			\ })<CR>
 
 command! FZFMru call fzf#run({
-\  'source':  v:oldfiles,
-\  'sink':    'e',
-\  'options': '-m -x +s',
-\  'down':    '40%'})
+			\  'source':  v:oldfiles,
+			\  'sink':    'e',
+			\  'options': '-m -x +s',
+			\  'down':    '40%'})
 
 command! -bang -nargs=* Find call fzf#vim#grep(
-	\ 'rg --column --line-number --no-heading --follow --color=always '.<q-args>, 1,
-	\ <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
+			\ 'rg --column --line-number --no-heading --follow --color=always '.<q-args>, 1,
+			\ <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
 
 " Emmet
 """""""""""""""""""""""""""""""""""""
 let g:user_emmet_settings = {
-\  'javascript.jsx': {
-\      'extends': 'jsx',
-\  },
-\}
+			\  'javascript.jsx': {
+			\      'extends': 'jsx',
+			\  },
+			\}
 
 " Fugitive Shortcuts
 """""""""""""""""""""""""""""""""""""
@@ -488,10 +492,10 @@ let g:ale_sign_warning = '⚠'
 " highlight clear ALEWarningSign
 
 let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'typescript': ['tslint', 'tsserver'],
-\	'html': []
-\}
+			\   'javascript': ['eslint'],
+			\   'typescript': ['tslint', 'tsserver'],
+			\	'html': []
+			\}
 
 " airline options
 let g:airline_powerline_fonts=1
@@ -539,6 +543,10 @@ let g:javascript_enable_domhtmlcss = 1
 
 "For select all document
 map <C-a> <esc>ggVG<CR>
+
+"For vim-autoformat
+noremap <F3> :Autoformat<CR>
+au BufWrite * :Autoformat
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
