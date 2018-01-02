@@ -17,9 +17,9 @@ abbr attribuet attribute
 set nocompatible            " not compatible with vi
 set autoread                " detect when a file is changed
 
-filetype on
-filetype plugin on
-filetype indent on
+"filetype on
+"filetype plugin on
+"filetype indent on
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
