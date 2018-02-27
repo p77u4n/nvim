@@ -100,10 +100,7 @@ Plug 'vim-latex/vim-latex', { 'for' : 'tex'}
 " general tool for languages
 Plug 'Chiel92/vim-autoformat'
 Plug 'jiangmiao/auto-pairs'
-<<<<<<< HEAD
-=======
 Plug 'scrooloose/nerdcommenter'
->>>>>>> update init
 
 " for tmux integration
 Plug 'christoomey/vim-tmux-navigator'
