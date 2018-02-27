@@ -40,12 +40,9 @@ Plug 'tpope/vim-fugitive' " amazing git wrapper for vim
 Plug 'tpope/vim-rhubarb' " hub extension for fugitive
 Plug 'tpope/vim-repeat' " enables repeating other supported plugins with the . command
 Plug 'garbas/vim-snipmate' " snippet manager
-<<<<<<< HEAD
 Plug 'editorconfig/editorconfig-vim' " .editorconfig support
 Plug 'MarcWeber/vim-addon-mw-utils' " interpret a file by function and cache file automatically
-=======
-Plug 'editorconfig/editorconfig-vim' " .editorconfig support Plug 'MarcWeber/vim-addon-mw-utils' " interpret a file by function and cache file automatically
->>>>>>> update init
+Plug 'editorconfig/editorconfig-vim' " .editorconfig support Plug 'MarcWeber/vim-addon-mw-utils'  interpret a file by function and cache file automatically
 Plug 'tomtom/tlib_vim' " utility functions for vim .There isn't much need to install it unless another plugin requires you to do so.
 Plug 'sotte/presenting.vim', { 'for': 'markdown' } " a simple tool for presenting slides in vim based on text files
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
