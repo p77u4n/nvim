@@ -39,13 +39,12 @@ Plug 'w0rp/ale' " Asynchonous linting engine
 Plug 'tpope/vim-fugitive' " amazing git wrapper for vim
 Plug 'tpope/vim-rhubarb' " hub extension for fugitive
 Plug 'tpope/vim-repeat' " enables repeating other supported plugins with the . command
-Plug 'garbas/vim-snipmate' " snippet manager
 Plug 'editorconfig/editorconfig-vim' " .editorconfig support
 Plug 'MarcWeber/vim-addon-mw-utils' " interpret a file by function and cache file automatically
 Plug 'editorconfig/editorconfig-vim' " .editorconfig support Plug 'MarcWeber/vim-addon-mw-utils'  interpret a file by function and cache file automatically
 Plug 'tomtom/tlib_vim' " utility functions for vim .There isn't much need to install it unless another plugin requires you to do so.
 Plug 'sotte/presenting.vim', { 'for': 'markdown' } " a simple tool for presenting slides in vim based on text files
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'tpope/vim-dispatch' " asynchronous build and test dispatcher // ref : https://codeyarns.com/2015/03/28/dispatch-plugin-for-vim/
 Plug 'tpope/vim-vinegar' " netrw helper - ref : http://codyveal.com/posts/vim-killer-features-part-2-file-navigation/
 Plug 'AndrewRadev/splitjoin.vim' " single/multi line code handler: gS - split one line into multiple, gJ - combine multiple lines into one
@@ -53,29 +52,33 @@ Plug 'vim-scripts/matchit.zip' " extended % matching
 Plug 'tpope/vim-sleuth' " detect indent style (tabs vs. spaces)
 Plug 'sickill/vim-pasta' " context-aware pasting
 
+Plug 'SirVer/ultisnips' " vim snippet
+
 " html / templates
-Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript.jsx'] } " emmet support for vim - easily create markdup wth CSS-like syntax
+Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript.jsx', 'js'] } " emmet support for vim - easily create markdup wth CSS-like syntax
 Plug 'gregsexton/MatchTag', { 'for': ['html', 'javascript.jsx'] } " match tags in html, similar to paren support
 Plug 'othree/html5.vim',  { 'for': ['html', 'javascript.jsx'] }" html5 support
 Plug 'digitaltoad/vim-pug', { 'for': ['jade', 'pug'] } " pug / jade support
 
 " javascript
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html'] }
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'moll/vim-node', { 'for': 'javascript' } " node support
-Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript'] } " JSX support
+"Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript'] } " JSX support
+
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 
-" TypeScript
-Plug 'jason0x43/vim-tss', { 'for': ['typescript', 'javascript', 'javascript.jsx'], 'do': 'npm install' }
-" Plug 'Quramy/tsuquyomi', { 'for': 'typescript', 'do': 'npm install' } " extended typescript support - works as a client for TSServer
+" Plug 'Quramy/tsuquyomi', { 'for': 'typescript' 'do': 'npm install' } " extended typescript support - works as a client for TSServer
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' } " typescript support
-
 " Elm
 Plug 'lambdatoast/elm.vim', { 'for': 'elm' }
 
 " CoffeeScript
 Plug 'kchmck/vim-coffee-script'
+
+"For react
+Plug 'epilande/vim-react-snippets'
 
 " styles
 Plug 'wavded/vim-stylus', { 'for': ['stylus', 'markdown'] } " markdown support
@@ -83,6 +86,7 @@ Plug 'groenewege/vim-less', { 'for': 'less' } " less support
 " Plug 'ap/vim-css-color', { 'for': ['css','stylus','scss'] } " set the background of hex color values to the color
 Plug 'hail2u/vim-css3-syntax', { 'for': 'css' } " CSS3 syntax support
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' } " sass scss syntax support
+Plug 'ap/vim-css-color', { 'for': ['scss', 'css'] } " css color hightlight support
 
 " markdown
 Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
@@ -106,5 +110,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'matze/vim-move'
+
 
 call plug#end()
