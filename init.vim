@@ -17,9 +17,16 @@ abbr attribuet attribute
 set nocompatible            " not compatible with vi
 set autoread                " detect when a file is changed
 
-"filetype on
-"filetype plugin on
-"filetype indent on
+filetype on
+filetype plugin on
+filetype indent on
+
+set re=1 "disable new engin:
+
+augroup FiletypeGroup
+    autocmd!
+    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -27,18 +34,17 @@ let mapleader = ","
 let g:mapleader = ","
 
 set history=1000            " change history to 1000
-set textwidth=120
 
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
-let g:python_host_prog = '/usr/bin/python2'
-let g:python3_host_prog = '/usr/bin/python3'
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 if (has('nvim'))
-	" show results of substition as they're happening
-	" but don't open a split
-	set inccommand=nosplit
+    " show results of substition as they're happening
+    " but don't open a split
+    set inccommand=nosplit
 endif
 
 " }}}
@@ -52,41 +58,40 @@ set t_Co=256                " Explicitly tell vim that the terminal supports 256
 
 " switch cursor to line when in insert mode, and block when not
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-			\,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-			\,sm:block-blinkwait175-blinkoff150-blinkon175
+	    \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+	    \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 if &term =~ '256color'
-	" disable background color erase
-	set t_ut=
+    " disable background color erase
+    set t_ut=
 endif
 
 " enable 24 bit color support if supported
 if (has('mac') && empty($TMUX) && has("termguicolors"))
-	set termguicolors
+    set termguicolors
 endif
 
 if filereadable(expand("~/.vimrc_background"))
-	let base16colorspace=256
-	source ~/.vimrc_background
+    let base16colorspace=256
+    source ~/.vimrc_background
 else
-	" let g:solarized_termcolors=256
-	colorscheme gruvbox
-	" colorscheme solarized
+    " let g:solarized_termcolors=256
+    colorscheme gruvbox 
+    " colorscheme solarized
 endif
 
 set background=dark
 " Set extra options when running in GUI mode
 if has("gui_running")
-	set guioptions-=T
-	set guioptions-=e
-	set t_Co=256
-	set guitablabel=%M\ %t
+    set guioptions-=T
+    set guioptions-=e
+    set t_Co=256
+    set guitablabel=%M\ %t
 endif
-
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
-set guifont=Fira\ Mono\ Medium\ 20
+set guifont=Fira\ Mono\ Medium\ 22
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
@@ -101,7 +106,6 @@ highlight xmlAttrib cterm=italic
 highlight Type cterm=italic
 highlight Normal ctermbg=none
 
-
 "Vim hybrid relative numbering
 :set number relativenumber
 "Auto switch to absolute line number while switch to insert mode
@@ -112,6 +116,7 @@ highlight Normal ctermbg=none
 :augroup END
 
 set wrap                    " turn on line wrapping
+set textwidth=80
 set wrapmargin=8            " wrap lines when coming within n characters from side
 set linebreak               " set soft wrapping
 set showbreak=…             " show ellipsis at breaking
@@ -131,11 +136,12 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
 " Tab control
-set noexpandtab             " insert tabs rather than spaces for <Tab>
+"set noexpandtab             " insert tabs rather than spaces for <Tab>
+set expandtab
 set smarttab                " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
-set tabstop=4               " the visible width of tabs
-set softtabstop=4           " edit as if the tabs are 4 characters wide
-set shiftwidth=4            " number of spaces to use for indent and unindent
+set tabstop=2               " the visible width of tabs
+set softtabstop=2           " edit as if the tabs are 4 characters wide
+set shiftwidth=2            " number of spaces to use for indent and unindent
 set shiftround              " round indent to a multiple of 'shiftwidth'
 set completeopt+=longest
 
@@ -145,6 +151,11 @@ set foldlevelstart=99
 set foldnestmax=10          " deepest fold is 10 levels
 set nofoldenable            " don't fold by default
 set foldlevel=1
+
+augroup javascript_folding
+		au!
+		au FileType javascript setlocal foldmethod=syntax
+augroup END
 
 set clipboard=unnamed
 
@@ -185,8 +196,8 @@ set tm=500
 set colorcolumn=80
 
 if has('mouse')
-	set mouse=a
-	" set ttymouse=xterm2
+		set mouse=a
+		" set ttymouse=xterm2
 endif
 
 " }}}
@@ -232,7 +243,6 @@ nmap <leader>md :%!markdown --html4tags <cr>
 nmap <leader><space> :%s/\s\+$<cr>
 nmap <leader><space><space> :%s/\n\{2,}/\r\r/g<cr>
 
-
 nmap <leader>l :set list!<cr>
 
 " Textmate style indentation
@@ -241,16 +251,22 @@ vmap <leader>] >gv
 nmap <leader>[ <<
 nmap <leader>] >>
 
+
 " switch between current and last buffer
 nmap <leader>. <c-^>
+
+" delete but not cut
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
 
 " enable . command in visual mode
 vnoremap . :normal .<cr>
 
-map <silent> <C-h> :call functions#WinMove('h')<cr>
-map <silent> <C-j> :call functions#WinMove('j')<cr>
-map <silent> <C-k> :call functions#WinMove('k')<cr>
-map <silent> <C-l> :call functions#WinMove('l')<cr>
+nmap <silent> <C-h> :call functions#WinMove('h')<cr>
+nmap <silent> <C-j> :call functions#WinMove('j')<cr>
+nmap <silent> <C-k> :call functions#WinMove('k')<cr>
+nmap <silent> <C-l> :call functions#WinMove('l')<cr>
 
 map <leader>wc :wincmd q<cr>
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
@@ -293,8 +309,8 @@ map <leader>r :call RunCustomCommand()<cr>
 let g:silent_custom_command = 0
 
 " helpers for dealing with other people's code
-nmap \t :set ts=4 sts=4 sw=4 noet<cr>
-nmap \s :set ts=4 sts=4 sw=4 et<cr>
+nmap \t :set ts=2 sts=2 sw=2 noet<cr>
+nmap \s :set ts=2 sts=2 sw=2 et<cr>
 
 nnoremap <silent> <leader>u :call functions#HtmlUnEscape()<cr>
 
@@ -327,7 +343,6 @@ map <leader>bd :Bclose<cr>
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
 
-
 " Quickly open a buffer for scripbble
 map <leader>q :e ~/buffer<cr>
 
@@ -352,8 +367,8 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Specify the behavior when switching between buffers
 try
-	set switchbuf=useopen,usetab,newtab
-	set stal=2
+    set switchbuf=useopen,usetab,newtab
+    set stal=2
 catch
 endtry
 
@@ -361,44 +376,76 @@ set viminfo^=%
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
-	exe "normal mz"
-	%s/\s\+$//ge
-	exe "normal `z"
+    exe "normal mz"
+    %s/\s\+$//ge
+    exe "normal `z"
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 "  }}}
 
+
+"""""""""""""""" Copy File Path Utilities - https://stackoverflow.com/a/17096082 {{{
+" copy current file name (relative/absolute) to system clipboard
+if has("mac") || has("gui_macvim") || has("gui_mac")
+  " relative path  (src/foo.txt)
+  nnoremap <leader>cfr :let @*=expand("%")<CR>
+
+  " absolute path  (/something/src/foo.txt)
+  nnoremap <leader>cfa :let @*=expand("%:p")<CR>
+
+  " filename       (foo.txt)
+  nnoremap <leader>cff :let @*=expand("%:t")<CR>
+
+  " directory name (/something/src)
+  nnoremap <leader>cfd :let @*=expand("%:p:h")<CR>
+endif
+
+" copy current file name (relative/absolute) to system clipboard (Linux version)
+if has("gui_gtk") || has("gui_gtk2") || has("gui_gnome") || has("unix")
+  " relative path (src/foo.txt)
+  nnoremap <leader>cfr :let @+=expand("%")<CR>
+
+  " absolute path (/something/src/foo.txt)
+  nnoremap <leader>cfa :let @+=expand("%:p")<CR>
+
+  " filename (foo.txt)
+  nnoremap <leader>cff :let @+=expand("%:t")<CR>
+
+  " directory name (/something/src)
+  nnoremap <leader>cfd :let @+=expand("%:p:h")<CR>
+endif
+"  }}}
+
 """""""""""""""" Section AutoGroups {{{
 " file type specific settings
 augroup configgroup
-	autocmd!
+    autocmd!
 
-	" automatically resize panes on resize
-	autocmd VimResized * exe 'normal! \<c-w>='
-	autocmd BufWritePost .vimrc,.vimrc.local,init.vim source %
-	autocmd BufWritePost .vimrc.local source %
-	" save all files on focus lost, ignoring warnings about untitled buffers
-	autocmd FocusLost * silent! wa
+    " automatically resize panes on resize
+    autocmd VimResized * exe 'normal! \<c-w>='
+    autocmd BufWritePost .vimrc,.vimrc.local,init.vim source %
+    autocmd BufWritePost .vimrc.local source %
+    " save all files on focus lost, ignoring warnings about untitled buffers
+    autocmd FocusLost * silent! wa
 
-	" make quickfix windows take all the lower section of the screen
-	" when there are multiple windows open
-	autocmd FileType qf wincmd J
-	autocmd FileType qf nmap q :q<cr>
+    " make quickfix windows take all the lower section of the screen
+    " when there are multiple windows open
+    autocmd FileType qf wincmd J
 
-	autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-	let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'stylus', 'html']
+    autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+    let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'stylus', 'html']
 
-	" autocmd! BufEnter * call functions#ApplyLocalSettings(expand('<afile>:p:h'))
+    " autocmd! BufEnter * call functions#ApplyLocalSettings(expand('<afile>:p:h'))
 
-	autocmd BufNewFile,BufRead,BufWrite *.md syntax match Comment /\%^---\_.\{-}---$/
+    autocmd BufNewFile,BufRead,BufWrite *.md syntax match Comment /\%^---\_.\{-}---$/
 augroup END
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
-			\ if line("'\"") > 0 && line("'\"") <= line("$") |
-			\   exe "normal! g`\"" |
-			\ endif
+	    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+	    \   exe "normal! g`\"" |
+	    \ endif
 
 " }}}
 
@@ -413,7 +460,7 @@ nmap <silent> <leader>y :NERDTreeFind<cr>
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 let NERDTreeChDirMode=0
-let NERDTreeQuitOnOpen=0
+let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
@@ -427,11 +474,11 @@ let NERDTreeDirArrowCollapsible = '▼'
 let g:fzf_layout = { 'down': '~25%' }
 
 if isdirectory(".git")
-	" if in a git project, use :GFiles
-	nmap <silent> <leader>t :GFiles --cached --others --exclude-standard<cr>
+    " if in a git project, use :GFiles
+    nmap <silent> <leader>t :GFiles --cached --others --exclude-standard<cr>
 else
-	" otherwise, use :FZF
-	nmap <silent> <leader>t :FZF<cr>
+    " otherwise, use :FZF
+    nmap <silent> <leader>t :FZF<cr>
 endif
 
 nmap <silent> <leader>r :Buffers<cr>
@@ -447,31 +494,25 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 nnoremap <silent> <Leader>C :call fzf#run({
-			\   'source':
-			\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
-			\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
-			\   'sink':    'colo',
-			\   'options': '+m',
-			\   'left':    30
-			\ })<CR>
-
-command! FZFMru call fzf#run({
-			\  'source':  v:oldfiles,
-			\  'sink':    'e',
-			\  'options': '-m -x +s',
-			\  'down':    '40%'})
+	    \   'source':
+	    \     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
+	    \         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+	    \   'sink':    'colo',
+	    \   'options': '+m',
+	    \   'left':    30
+	    \ })<CR>
 
 command! -bang -nargs=* Find call fzf#vim#grep(
-			\ 'rg --column --line-number --no-heading --follow --color=always '.<q-args>, 1,
-			\ <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
+	    \ 'rg --column --line-number --no-heading --follow --color=always '.<q-args>, 1,
+	    \ <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
 
 " Emmet
 """""""""""""""""""""""""""""""""""""
 let g:user_emmet_settings = {
-			\  'javascript.jsx': {
-			\      'extends': 'jsx',
-			\  },
-			\}
+	    \  'javascript.jsx': {
+	    \      'extends': 'jsx',
+	    \  },
+	    \}
 
 " Fugitive Shortcuts
 """""""""""""""""""""""""""""""""""""
@@ -485,18 +526,28 @@ nmap <leader>mq :MarkedQuit<cr>
 nmap <leader>* *<c-o>:%s///gn<cr>
 
 let g:ale_change_sign_column_color = 1
+" Enable completion where available.
+let g:ale_completion_enabled = 1
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
+let g:ale_fix_on_save = 1
 " highlight clear ALEErrorSign
 " highlight clear ALEWarningSign
 
 let g:ale_linters = {
-			\   'javascript': ['eslint'],
-			\   'typescript': ['tslint', 'tsserver'],
-			\	'html': []
-			\}
-
+	    \   'javascript': ['eslint', 'prettier'],
+	    \	'jsx' : ['eslint'],
+	    \   'typescript': ['tslint', 'tsserver'],
+	    \	'css': ['prettier', 'stylelint'],
+	    \	'html': []
+	    \}
+let g:ale_linter_aliases = {'jsx': 'css'}
+let g:ale_fixers = {
+	    \   'javascript': ['eslint', 'prettier-eslint'],
+      \	'jsx': ['eslint', 'prettier-eslint'],
+	    \	'css': ['prettier', 'stylelint']
+	    \}
 " airline options
 let g:airline_powerline_fonts=1
 let g:airline_left_sep=''
@@ -518,6 +569,9 @@ let g:clang_library_path='/usr/lib/llvm-3.5/lib/libclang.so.1'
 
 "For vim-go
 
+
+
+
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
@@ -530,13 +584,11 @@ au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 
-
 "For SnipMate - changing the trigger to <Ctrl> + J instead of <TAB> to
 "prevent a clash with the YouCompleteme
 
-imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
-smap <C-J> <Plug>snipMateNextOrTrigger
-
+"imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
+"smap <C-J> <Plug>snipMateNextOrTrigger
 
 "FOR VIM-JAVASCRIPT
 let g:javascript_enable_domhtmlcss = 1
@@ -546,7 +598,32 @@ map <C-a> <esc>ggVG<CR>
 
 "For vim-autoformat
 noremap <F3> :Autoformat<CR>
-au BufWrite * :Autoformat
+let g:autoformat_verbosemode=1
+let g:formatdef_js_beautify='"js-beautify"'
+let g:formatdef_eslint='"eslint"'
+let g:formatdef_html_beautify='"html-beautify"'
+let g:formatters_jsx=['js_beautify', 'eslint', 'html-beautify']
+let g:formatters_javascript_jsx=['js_beautify', 'eslint', 'html_beautify']
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
+
+" For Vim javascript-libraries-syntax
+
+autocmd BufReadPre *.js let b:javascript_lib_use_jquery = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_backbone = 0
+autocmd BufReadPre *.js let b:javascript_lib_use_reactjs = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_ramda = 1
+
+autocmd BufReadPre *.js let b:javascript_lib_use_prelude = 0
+autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 0
+
+" for vim utilsnip to reconcile with youcompleme tab
+
+let g:UltiSnipsExpandTrigger="<C-J>"
+
+"for vim-easytags
+  
+let g:easytags_async = 1
+let g:easytags_auto_update = 0
