@@ -22,6 +22,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
+Plug 'flazz/vim-colorschemes'
 " utilities
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons' " file drawer
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -44,7 +45,6 @@ Plug 'MarcWeber/vim-addon-mw-utils' " interpret a file by function and cache fil
 Plug 'editorconfig/editorconfig-vim' " .editorconfig support Plug 'MarcWeber/vim-addon-mw-utils'  interpret a file by function and cache file automatically
 Plug 'tomtom/tlib_vim' " utility functions for vim .There isn't much need to install it unless another plugin requires you to do so.
 Plug 'sotte/presenting.vim', { 'for': 'markdown' } " a simple tool for presenting slides in vim based on text files
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'tpope/vim-dispatch' " asynchronous build and test dispatcher // ref : https://codeyarns.com/2015/03/28/dispatch-plugin-for-vim/
 Plug 'tpope/vim-vinegar' " netrw helper - ref : http://codyveal.com/posts/vim-killer-features-part-2-file-navigation/
 Plug 'AndrewRadev/splitjoin.vim' " single/multi line code handler: gS - split one line into multiple, gJ - combine multiple lines into one
@@ -53,13 +53,12 @@ Plug 'tpope/vim-sleuth' " detect indent style (tabs vs. spaces)
 Plug 'sickill/vim-pasta' " context-aware pasting
 
 Plug 'SirVer/ultisnips' " vim snippet
-
+Plug 'Galooshi/vim-import-js'
 " html / templates
-Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript.jsx', 'js'] } " emmet support for vim - easily create markdup wth CSS-like syntax
 Plug 'gregsexton/MatchTag', { 'for': ['html', 'javascript.jsx'] } " match tags in html, similar to paren support
 Plug 'othree/html5.vim',  { 'for': ['html', 'javascript.jsx'] }" html5 support
 Plug 'digitaltoad/vim-pug', { 'for': ['jade', 'pug'] } " pug / jade support
-
+Plug 'mattn/emmet-vim'
 " javascript
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html'] }
 Plug 'maxmellon/vim-jsx-pretty'
@@ -69,7 +68,7 @@ Plug 'moll/vim-node', { 'for': 'javascript' } " node support
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 
-" Plug 'Quramy/tsuquyomi', { 'for': 'typescript' 'do': 'npm install' } " extended typescript support - works as a client for TSServer
+" Plug 'Quramy/tsuquyomi', { 'for': 'typescript 'do': 'npm install' } " extended typescript support - works as a client for TSServer
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' } " typescript support
 " Elm
 Plug 'lambdatoast/elm.vim', { 'for': 'elm' }
@@ -79,6 +78,7 @@ Plug 'kchmck/vim-coffee-script'
 
 "For react
 Plug 'epilande/vim-react-snippets'
+Plug 'https://github.com/wesQ3/vim-windowswap'
 
 " styles
 Plug 'wavded/vim-stylus', { 'for': ['stylus', 'markdown'] } " markdown support
@@ -111,5 +111,15 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'matze/vim-move'
 
+Plug 'chrisbra/NrrwRgn'
+Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 call plug#end()
