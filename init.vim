@@ -493,6 +493,19 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
+"imap <c-y>A <plug>(emmet-anchorize-summary)
+"imap <c-y>a <plug>(emmet-anchorize-url)
+"imap <c-y>k <plug>(emmet-remove-tag)
+"imap <c-y>j <plug>(emmet-split-join-tag)
+"imap <c-y>/ <plug>(emmet-toggle-comment)
+"imap <c-y>i <plug>(emmet-image-size)
+"imap <c-y>N <plug>(emmet-move-prev)
+"imap <c-y>n <plug>(emmet-move-next)
+"imap <c-y>D <plug>(emmet-balance-tag-outword)
+"imap <c-y>d <plug>(emmet-balance-tag-inward)
+"imap <c-y>u <plug>(emmet-update-tag)
+"imap <c-y>; <plug>(emmet-expand-word)
+"imap <c-y>, <plug>(emmet-expand-abbr)
 nnoremap <silent> <Leader>C :call fzf#run({
 	    \   'source':
 	    \     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
@@ -535,18 +548,18 @@ let g:ale_fix_on_save = 1
 " highlight clear ALEErrorSign
 " highlight clear ALEWarningSign
 
+let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
 let g:ale_linters = {
-	    \   'javascript': ['eslint', 'prettier'],
-	    \	'jsx' : ['eslint'],
+	    \   'javascript': ['eslint'],
+	    \	'jsx' : ['stylelint', 'eslint'],
 	    \   'typescript': ['tslint', 'tsserver'],
-	    \	'css': ['prettier', 'stylelint'],
+	    \	'css': ['prettier'],
 	    \	'html': []
 	    \}
-let g:ale_linter_aliases = {'jsx': 'css'}
 let g:ale_fixers = {
-	    \   'javascript': ['eslint', 'prettier-eslint'],
-      \	'jsx': ['eslint', 'prettier-eslint'],
-	    \	'css': ['prettier', 'stylelint']
+	    \   'javascript': ['eslint'],
+      \	'jsx': ['eslint'],
+	    \	'css': ['prettier']
 	    \}
 " airline options
 let g:airline_powerline_fonts=1
@@ -554,6 +567,8 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_theme='base16'
 let g:airline#extensions#tabline#enabled = 1 " enable airline tabline
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#tab_min_count = 2 " only show tabline if tabs are being used (more than 1 tab open)
 let g:airline#extensions#tabline#show_buffers = 0 " do not show open buffers in tabline
 let g:airline#extensions#tabline#show_splits = 0
@@ -627,3 +642,9 @@ let g:UltiSnipsExpandTrigger="<C-J>"
   
 let g:easytags_async = 1
 let g:easytags_auto_update = 0
+"for vim commentary
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:deoplete#enable_at_startup = 1
+
+" for import js
+nmap <leader>f :ImportJSFix<cr>
