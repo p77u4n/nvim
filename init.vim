@@ -648,3 +648,5 @@ let g:deoplete#enable_at_startup = 1
 
 " for import js
 nmap <leader>f :ImportJSFix<cr>
+
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'
