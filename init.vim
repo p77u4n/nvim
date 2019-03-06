@@ -655,7 +655,11 @@ let g:tern_map_keys=1
 let g:tern_map_prefix='\'
 " for carbon now sh
 vnoremap <F5> :CarbonNowSh<CR>
-let g:carbon_now_sh_browser = 'google-chrome'
+if (has('mac'))
+  let g:carbon_now_sh_browser = "open -a 'Google Chrome'"
+else
+  let g:carbon_now_sh_browser = "open -a 'Google Chrome'"
+endif
 let g:carbon_now_sh_options =
 \ { 'ln': 'true',
   \ 'fm': 'Source Code Pro' }
