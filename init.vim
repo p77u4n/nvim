@@ -650,3 +650,12 @@ let g:deoplete#enable_at_startup = 1
 nmap <leader>f :ImportJSFix<cr>
 
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+nmap <F8> :TagbarToggle<CR>
+let g:tern_map_keys=1
+let g:tern_map_prefix='\'
+" for carbon now sh
+vnoremap <F5> :CarbonNowSh<CR>
+let g:carbon_now_sh_browser = 'google-chrome'
+let g:carbon_now_sh_options =
+\ { 'ln': 'true',
+  \ 'fm': 'Source Code Pro' }
