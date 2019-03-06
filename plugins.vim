@@ -122,4 +122,9 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
+Plug 'xolox/vim-easytags'
+Plug 'majutsushi/tagbar'
+
+Plug 'kristijanhusak/vim-carbon-now-sh'
+
 call plug#end()
