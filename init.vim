@@ -58,8 +58,8 @@ set t_Co=256                " Explicitly tell vim that the terminal supports 256
 
 " switch cursor to line when in insert mode, and block when not
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-	    \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-	    \,sm:block-blinkwait175-blinkoff150-blinkon175
+      \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+      \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 if &term =~ '256color'
     " disable background color erase
@@ -67,8 +67,11 @@ if &term =~ '256color'
 endif
 
 " enable 24 bit color support if supported
-if (has('mac') && empty($TMUX) && has("termguicolors"))
-    set termguicolors
+"if (has('mac') && empty($TMUX) && has("termguicolors"))
+    "set termguicolors
+"endif
+if (has("termguicolors"))
+  set termguicolors
 endif
 
 if filereadable(expand("~/.vimrc_background"))
@@ -76,7 +79,14 @@ if filereadable(expand("~/.vimrc_background"))
     source ~/.vimrc_background
 else
     " let g:solarized_termcolors=256
-    colorscheme gruvbox 
+    colorscheme space-vim-dark
+    hi Comment cterm=italic
+    hi Normal     ctermbg=NONE guibg=NONE
+    hi LineNr     ctermbg=NONE guibg=NONE
+    hi SignColumn ctermbg=NONE guibg=NONE
+    let g:space_vim_dark_background = 234
+    let g:space_vim_italic = 0
+    color space-vim-dark
     " colorscheme solarized
 endif
 
@@ -153,8 +163,8 @@ set nofoldenable            " don't fold by default
 set foldlevel=1
 
 augroup javascript_folding
-		au!
-		au FileType javascript setlocal foldmethod=syntax
+    au!
+    au FileType javascript setlocal foldmethod=syntax
 augroup END
 
 set clipboard=unnamed
@@ -196,8 +206,8 @@ set tm=500
 set colorcolumn=80
 
 if has('mouse')
-		set mouse=a
-		" set ttymouse=xterm2
+    set mouse=a
+    " set ttymouse=xterm2
 endif
 
 " }}}
@@ -309,8 +319,8 @@ map <leader>r :call RunCustomCommand()<cr>
 let g:silent_custom_command = 0
 
 " helpers for dealing with other people's code
-nmap \t :set ts=2 sts=2 sw=2 noet<cr>
-nmap \s :set ts=2 sts=2 sw=2 et<cr>
+nmap \T :set ts=2 sts=2 sw=2 noet<cr>
+nmap \S :set ts=2 sts=2 sw=2 et<cr>
 
 nnoremap <silent> <leader>u :call functions#HtmlUnEscape()<cr>
 
@@ -443,9 +453,9 @@ augroup END
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
-	    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-	    \   exe "normal! g`\"" |
-	    \ endif
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
 
 " }}}
 
@@ -475,10 +485,10 @@ let g:fzf_layout = { 'down': '~25%' }
 
 if isdirectory(".git")
     " if in a git project, use :GFiles
-    nmap <silent> <leader>t :GFiles --cached --others --exclude-standard<cr>
+    nmap <silent> <leader>z :GFiles --cached --others --exclude-standard<cr>
 else
     " otherwise, use :FZF
-    nmap <silent> <leader>t :FZF<cr>
+    nmap <silent> <leader>z :FZF<cr>
 endif
 
 nmap <silent> <leader>r :Buffers<cr>
@@ -507,25 +517,25 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 "imap <c-y>; <plug>(emmet-expand-word)
 "imap <c-y>, <plug>(emmet-expand-abbr)
 nnoremap <silent> <Leader>C :call fzf#run({
-	    \   'source':
-	    \     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
-	    \         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
-	    \   'sink':    'colo',
-	    \   'options': '+m',
-	    \   'left':    30
-	    \ })<CR>
+      \   'source':
+      \     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
+      \         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+      \   'sink':    'colo',
+      \   'options': '+m',
+      \   'left':    30
+      \ })<CR>
 
 command! -bang -nargs=* Find call fzf#vim#grep(
-	    \ 'rg --column --line-number --no-heading --follow --color=always '.<q-args>, 1,
-	    \ <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
+      \ 'rg --column --line-number --no-heading --follow --color=always '.<q-args>, 1,
+      \ <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
 
 " Emmet
 """""""""""""""""""""""""""""""""""""
 let g:user_emmet_settings = {
-	    \  'javascript.jsx': {
-	    \      'extends': 'jsx',
-	    \  },
-	    \}
+      \  'javascript.jsx': {
+      \      'extends': 'jsx',
+      \  },
+      \}
 
 " Fugitive Shortcuts
 """""""""""""""""""""""""""""""""""""
@@ -550,28 +560,27 @@ let g:ale_fix_on_save = 1
 
 let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
 let g:ale_linters = {
-	    \   'javascript': ['eslint'],
-	    \	'jsx' : ['stylelint', 'eslint'],
-	    \   'typescript': ['tslint', 'tsserver'],
-	    \	'css': ['prettier'],
-	    \	'html': []
-	    \}
+      \   'javascript': ['eslint'],
+      \	'jsx' : ['stylelint', 'eslint'],
+      \   'typescript': ['tslint', 'tsserver'],
+      \	'css': ['prettier'],
+      \	'html': []
+      \}
 let g:ale_fixers = {
-	    \   'javascript': ['eslint'],
+      \   'javascript': ['eslint'],
       \	'jsx': ['eslint'],
-	    \	'css': ['prettier']
-	    \}
+      \	'css': ['prettier']
+      \}
 " airline options
 let g:airline_powerline_fonts=1
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_theme='base16'
+let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1 " enable airline tabline
-" Set this. Airline will handle the rest.
+ "Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#tab_min_count = 2 " only show tabline if tabs are being used (more than 1 tab open)
 let g:airline#extensions#tabline#show_buffers = 0 " do not show open buffers in tabline
-let g:airline#extensions#tabline#show_splits = 0
+
+let g:airline#extensions#tabline#formatter = 'default'
 
 " don't hide quotes in json files
 let g:vim_json_syntax_conceal = 0
@@ -663,3 +672,53 @@ endif
 let g:carbon_now_sh_options =
 \ { 'ln': 'true',
   \ 'fm': 'Source Code Pro' }
+
+"""""""""""" for cheatsheet
+" Vim command used to open new buffer
+let g:CheatSheetReaderCmd='new"'
+
+" Cheat sheet file type
+let g:CheatSheetFt='markdown'
+
+" Program used to retrieve cheat sheet with its arguments
+let g:CheatSheetUrlGetter='curl --silent'
+
+" Flag to add cookie file to the query
+let g:CheatSheetUrlGetterIdFlag='-b'
+
+" cheat sheet base url
+let g:CheatSheetBaseUrl='https://cht.sh'
+
+" cheat sheet settings do not include style settings neiter comments, 
+" see other options below
+let g:CheatSheetUrlSettings='q'
+
+" cheat sheet pager
+let g:CheatPager='less -R'
+
+" pygmentize theme used for pager output, see :CheatPager :styles-demo
+let g:CheatSheetPagerStyle='rrt'
+
+" Show comments in answers by default
+" (setting this to 0 means giving ?Q to the server)
+let g:CheatSheetShowCommentsByDefault=1
+
+" cheat sheet buffer name
+let g:CheatSheetBufferName="_cheat"
+
+" Default selection in normal mode (line for whole line, word for word under cursor)
+let g:CheatSheetDefaultSelection="line"
+
+" Default query mode
+" 0 => buffer
+" 1 => replace (do not use or you might loose some lines of code)
+" 2 => pager
+" 3 => paste after query
+" 4 => paste before query
+let g:CheatSheetDefaultMode=2
+
+" Path to cheat sheet cookie
+let g:CheatSheetIdPath=expand('~/.cht.sh/id')
+
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+"let g:indentLine_setColors = 0
