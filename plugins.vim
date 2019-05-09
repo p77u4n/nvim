@@ -126,5 +126,9 @@ Plug 'xolox/vim-easytags'
 Plug 'majutsushi/tagbar'
 
 Plug 'kristijanhusak/vim-carbon-now-sh'
+Plug 'dbeniamine/cheat.sh-vim'
+Plug 'mhinz/vim-startify'
+Plug 'Yggdroot/indentLine'
+Plug 'liuchengxu/space-vim-dark'
 
 call plug#end()
