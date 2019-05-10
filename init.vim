@@ -100,7 +100,7 @@ if has("gui_running")
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
+set encoding=UTF-8
 set guifont=Fira\ Mono\ Medium\ 22
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -651,6 +651,7 @@ let g:UltiSnipsExpandTrigger="<C-J>"
   
 let g:easytags_async = 1
 let g:easytags_auto_update = 0
+let g:easytags_suppress_ctags_warning = 1
 "for vim commentary
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:deoplete#enable_at_startup = 1

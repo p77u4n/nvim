@@ -131,4 +131,6 @@ Plug 'mhinz/vim-startify'
 Plug 'Yggdroot/indentLine'
 Plug 'liuchengxu/space-vim-dark'
 
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
