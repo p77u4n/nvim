@@ -21,12 +21,13 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'joshdick/onedark.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
+Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'altercation/vim-colors-solarized'
 Plug 'flazz/vim-colorschemes'
 " utilities
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons' " file drawer
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim' " search inside files using ack. Same as command line ack utility, but use :Ack
 "Plug 'Raimondi/delimitMate' " automatic closing of quotes, parenthesis, brackets, etc.
 Plug 'tpope/vim-commentary' " comment stuff out
@@ -36,13 +37,12 @@ Plug 'tpope/vim-surround' " mappings to easily delete, change and add such surro
 Plug 'benmills/vimux' " tmux integration for vim
 Plug 'vim-airline/vim-airline' " Fancy status line
 Plug 'vim-airline/vim-airline-themes' " Theme for vim airline
-Plug 'w0rp/ale' " Asynchonous linting engine
+" Plug 'w0rp/ale' " Asynchonous linting engine
 Plug 'tpope/vim-fugitive' " amazing git wrapper for vim
 Plug 'tpope/vim-rhubarb' " hub extension for fugitive
 Plug 'tpope/vim-repeat' " enables repeating other supported plugins with the . command
 Plug 'editorconfig/editorconfig-vim' " .editorconfig support
 Plug 'MarcWeber/vim-addon-mw-utils' " interpret a file by function and cache file automatically
-Plug 'editorconfig/editorconfig-vim' " .editorconfig support Plug 'MarcWeber/vim-addon-mw-utils'  interpret a file by function and cache file automatically
 Plug 'tomtom/tlib_vim' " utility functions for vim .There isn't much need to install it unless another plugin requires you to do so.
 Plug 'sotte/presenting.vim', { 'for': 'markdown' } " a simple tool for presenting slides in vim based on text files
 Plug 'tpope/vim-dispatch' " asynchronous build and test dispatcher // ref : https://codeyarns.com/2015/03/28/dispatch-plugin-for-vim/
@@ -60,18 +60,17 @@ Plug 'othree/html5.vim',  { 'for': ['html', 'javascript.jsx'] }" html5 support
 Plug 'digitaltoad/vim-pug', { 'for': ['jade', 'pug'] } " pug / jade support
 Plug 'mattn/emmet-vim'
 " javascript
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html'] }
-Plug 'maxmellon/vim-jsx-pretty'
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html', 'typescript.tsx'] }
+"Plug 'mxw/vim-jsx'
+Plug 'MaxMEllon/vim-jsx-pretty', { 'for': 'javascript.jsx' } " very laggy dont use this
 Plug 'moll/vim-node', { 'for': 'javascript' } " node support
-"Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript'] } " JSX support
-
-Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
-Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
-
-" Plug 'Quramy/tsuquyomi', { 'for': 'typescript 'do': 'npm install' } " extended typescript support - works as a client for TSServer
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' } " typescript support
-" Elm
-Plug 'lambdatoast/elm.vim', { 'for': 'elm' }
+"Typescript syntax highlighting
+"
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+" Plug 'HerringtonDarkholme/yats.vim' "very laggy
+"Elm
+"Plug 'lambdatoast/elm.vim', { 'for': 'elm' }
 
 " CoffeeScript
 Plug 'kchmck/vim-coffee-script'
@@ -90,6 +89,7 @@ Plug 'ap/vim-css-color', { 'for': ['scss', 'css'] } " css color hightlight suppo
 
 " markdown
 Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
+Plug 'godlygeek/tabular'
 Plug 'tpope/vim-markdown', { 'for': 'markdown' } " markdown support
 
 " language-specific plugins
@@ -99,7 +99,6 @@ Plug 'fatih/vim-go', { 'for': 'go' } " go support
 Plug 'timcharper/textile.vim', { 'for': 'textile' } " textile support
 Plug 'vim-latex/vim-latex', { 'for' : 'tex'}
 " general tool for languages
-Plug 'Chiel92/vim-autoformat'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 
@@ -112,18 +111,7 @@ Plug 'xolox/vim-session'
 Plug 'matze/vim-move'
 
 Plug 'chrisbra/NrrwRgn'
-Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-Plug 'xolox/vim-easytags'
-Plug 'majutsushi/tagbar'
 
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'dbeniamine/cheat.sh-vim'
@@ -132,5 +120,16 @@ Plug 'Yggdroot/indentLine'
 Plug 'liuchengxu/space-vim-dark'
 
 Plug 'ryanoasis/vim-devicons'
+
+" Moving around easier
+Plug 'easymotion/vim-easymotion'
+
+Plug 'liuchengxu/vista.vim'
+
+" Use release branch (Recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'neoclide/coc-denite'
+Plug 'Shougo/denite.nvim'
 
 call plug#end()
