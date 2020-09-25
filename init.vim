@@ -18,7 +18,6 @@ set nocompatible            " not compatible with vi
 set autoread                " detect when a file is changed
 set redrawtime=10000
 syntax sync fromstart
-
 filetype on
 filetype plugin on
 filetype indent on
@@ -102,7 +101,7 @@ endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=UTF-8
-set guifont=Fira\ Mono\ Medium\ 22
+set guifont=FiraCode\ Nerd\ Font\ Medium\ 22
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
@@ -143,8 +142,6 @@ hi CocWarningHighlight ctermfg=yellow guifg=#c4ab39 gui=undercurl term=undercurl
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
-
-set wr
 
 set autoindent              " automatically set indent of new line
 set smartindent
@@ -318,6 +315,9 @@ nnoremap <leader>cl :set cursorline!<cr>
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+
 " moving up and down work as you would expect
 nnoremap <silent> j gj
 nnoremap <silent> k gk
@@ -479,21 +479,22 @@ autocmd BufReadPost *
 " FZF
 """""""""""""""""""""""""""""""""""""
 " Toggle NERDTree
-nmap <silent> <leader>k :NERDTreeToggle<cr>
+"nmap <silent> <leader>k :NERDTreeToggle<cr>
+:nmap <space>e :CocCommand explorer<CR>
 " expand to the path of the file in the current buffer
-nmap <silent> <leader>y :NERDTreeFind<cr>
-let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-let NERDTreeChDirMode=0
-let NERDTreeQuitOnOpen=1
-let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=1
-let g:nerdtree_tabs_open_on_gui_startup=1
-let g:nerdtree_tabs_open_on_console_startup=1
-map <Leader>n <plug>NERDTreeTabsToggle<CR>
-let NERDTreeDirArrowExpandable = '▷'
-let NERDTreeDirArrowCollapsible = '▼'
+"nmap <silent> <leader>y :NERDTreeFind<cr>
+"let NERDTreeShowBookmarks=1
+"let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+"let NERDTreeChDirMode=0
+"let NERDTreeQuitOnOpen=1
+"let NERDTreeMouseMode=2
+"let NERDTreeShowHidden=1
+"let NERDTreeKeepTreeInNewTab=1
+"let g:nerdtree_tabs_open_on_gui_startup=1
+"let g:nerdtree_tabs_open_on_console_startup=1
+"map <Leader>n <plug>NERDTreeTabsToggle<CR>
+"let NERDTreeDirArrowExpandable = '▷'
+"let NERDTreeDirArrowCollapsible = '▼'
 
 " FZF
 let g:fzf_layout = { 'down': '~25%' }
@@ -713,7 +714,7 @@ vnoremap <F5> :CarbonNowSh<CR>
 if (has('mac'))
   let g:carbon_now_sh_browser = "open -a 'Google Chrome'"
 else
-  let g:carbon_now_sh_browser = "open -a 'Google Chrome'"
+  let g:carbon_now_sh_browser = "google-chrome"
 endif
 let g:carbon_now_sh_options =
 \ { 'ln': 'true',
@@ -1014,9 +1015,9 @@ endfunction
 nnoremap <Leader>pf :Denite file/rec<CR>
 nnoremap <Leader>pr :Denite file/old buffer<CR>
 nnoremap <C-o> :CocList outline<CR>
-map * :Denite -resume -refresh<CR>
+"map * :Denite -resume -refresh<CR>
 
-nmap ; :Denite buffer<CR>
+nmap ; :Denite
 nmap <leader>t :DeniteProjectDir file/rec<CR>
 nnoremap <leader>g :<C-u>Denite grep:. -no-empty<CR>
 nnoremap <leader>j :<C-u>DeniteCursorWord grep:.<CR>

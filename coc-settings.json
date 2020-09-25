@@ -40,5 +40,9 @@
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"]
     }
+  },
+  "explorer.keyMappings": {
+    "gk": false,
+    "gj": false
   }
 }
