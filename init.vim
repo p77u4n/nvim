@@ -86,7 +86,7 @@ else
     hi Normal     ctermbg=NONE guibg=NONE
     hi LineNr     ctermbg=NONE guibg=NONE
     hi SignColumn ctermbg=NONE guibg=NONE
-    colorscheme gruvbox 
+    colorscheme onedark
 endif
 
 set background=dark
@@ -101,7 +101,7 @@ endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=UTF-8
-set guifont=FiraCode\ Nerd\ Font\ Medium\ 22
+set guifont=FiraCode\ Nerd\ Font\ Medium\ 15
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
@@ -482,42 +482,28 @@ autocmd BufReadPost *
 "nmap <silent> <leader>k :NERDTreeToggle<cr>
 :nmap <space>e :CocCommand explorer<CR>
 " expand to the path of the file in the current buffer
-"nmap <silent> <leader>y :NERDTreeFind<cr>
-"let NERDTreeShowBookmarks=1
-"let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-"let NERDTreeChDirMode=0
-"let NERDTreeQuitOnOpen=1
-"let NERDTreeMouseMode=2
-"let NERDTreeShowHidden=1
-"let NERDTreeKeepTreeInNewTab=1
-"let g:nerdtree_tabs_open_on_gui_startup=1
-"let g:nerdtree_tabs_open_on_console_startup=1
-"map <Leader>n <plug>NERDTreeTabsToggle<CR>
-"let NERDTreeDirArrowExpandable = '▷'
-"let NERDTreeDirArrowCollapsible = '▼'
-
 " FZF
-let g:fzf_layout = { 'down': '~25%' }
+"let g:fzf_layout = { 'down': '~25%' }
+"
+"if isdirectory(".git")
+"    " if in a git project, use :GFiles
+"    nmap <silent> <leader>z :GFiles --cached --others --exclude-standard<cr>
+"else
+"    " otherwise, use :FZF
+"    nmap <silent> <leader>z :FZF<cr>
+"endif
 
-if isdirectory(".git")
-    " if in a git project, use :GFiles
-    nmap <silent> <leader>z :GFiles --cached --others --exclude-standard<cr>
-else
-    " otherwise, use :FZF
-    nmap <silent> <leader>z :FZF<cr>
-endif
-
-nmap <silent> <leader>r :Buffers<cr>
-nmap <silent> <leader>e :FZF<cr>
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
+"nmap <silent> <leader>r :Buffers<cr>
+"nmap <silent> <leader>e :FZF<cr>
+"nmap <leader><tab> <plug>(fzf-maps-n)
+"xmap <leader><tab> <plug>(fzf-maps-x)
+"omap <leader><tab> <plug>(fzf-maps-o)
 
 " Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
+"imap <c-x><c-k> <plug>(fzf-complete-word)
+"imap <c-x><c-f> <plug>(fzf-complete-path)
+"imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+"imap <c-x><c-l> <plug>(fzf-complete-line)
 
 "imap <c-y>A <plug>(emmet-anchorize-summary)
 "imap <c-y>a <plug>(emmet-anchorize-url)
@@ -709,6 +695,17 @@ let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 nmap <F8> :TagbarToggle<CR>
 let g:tern_map_keys=1
 let g:tern_map_prefix='\'
+
+" for code snippet
+let g:completion_enable_snippet = 'UltiSnips'
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fl <cmd>Telescope git_files<cr>
+
 " for carbon now sh
 vnoremap <F5> :CarbonNowSh<CR>
 if (has('mac'))
@@ -720,6 +717,9 @@ let g:carbon_now_sh_options =
 \ { 'ln': 'true',
   \ 'fm': 'Source Code Pro' }
 
+"""""""""""" for vim-session
+let g:session_autosave_periodic=10
+"let g:session_autosave_silent=true
 """""""""""" for cheatsheet
 " Vim command used to open new buffer
 let g:CheatSheetReaderCmd='new"'
@@ -849,7 +849,8 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gd :call CocAction('jumpDefinition', 'split')<CR>
+nmap <silent> gdr <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -1021,3 +1022,13 @@ nmap ; :Denite
 nmap <leader>t :DeniteProjectDir file/rec<CR>
 nnoremap <leader>g :<C-u>Denite grep:. -no-empty<CR>
 nnoremap <leader>j :<C-u>DeniteCursorWord grep:.<CR>
+
+
+"""""""" FOR Treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true
+  },
+}
+EOF

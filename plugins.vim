@@ -24,11 +24,16 @@ Plug 'morhetz/gruvbox'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'altercation/vim-colors-solarized'
 Plug 'flazz/vim-colorschemes'
+Plug 'arcticicestudio/nord-vim'
 " utilities
 "Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons' " file drawer
 "Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 Plug 'mileszs/ack.vim' " search inside files using ack. Same as command line ack utility, but use :Ack
 "Plug 'Raimondi/delimitMate' " automatic closing of quotes, parenthesis, brackets, etc.
 Plug 'tpope/vim-commentary' " comment stuff out
@@ -54,6 +59,8 @@ Plug 'tpope/vim-sleuth' " detect indent style (tabs vs. spaces)
 Plug 'sickill/vim-pasta' " context-aware pasting
 
 Plug 'SirVer/ultisnips' " vim snippet
+Plug 'honza/vim-snippets'
+
 Plug 'Galooshi/vim-import-js'
 " html / templates
 Plug 'gregsexton/MatchTag', { 'for': ['html', 'javascript.jsx'] } " match tags in html, similar to paren support
@@ -80,8 +87,6 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'epilande/vim-react-snippets'
 Plug 'https://github.com/wesQ3/vim-windowswap'
 
-" styles
-Plug 'wavded/vim-stylus', { 'for': ['stylus', 'markdown'] } " markdown support
 Plug 'groenewege/vim-less', { 'for': 'less' } " less support
 " Plug 'ap/vim-css-color', { 'for': ['css','stylus','scss'] } " set the background of hex color values to the color
 Plug 'hail2u/vim-css3-syntax', { 'for': 'css' } " CSS3 syntax support
@@ -89,9 +94,13 @@ Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' } " sass scss syntax support
 Plug 'ap/vim-css-color', { 'for': ['scss', 'css'] } " css color hightlight support
 
 " markdown
-Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
+if has("mac") || has("gui_macvim") || has("gui_mac")
+  Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
+endif
+
+" styles
 Plug 'godlygeek/tabular'
-Plug 'tpope/vim-markdown', { 'for': 'markdown' } " markdown support
+Plug 'plasticboy/vim-markdown'
 
 " language-specific plugins
 Plug 'elzr/vim-json', { 'for': 'json' } " JSON support
@@ -125,6 +134,8 @@ Plug 'ryanoasis/vim-devicons'
 " Moving around easier
 Plug 'easymotion/vim-easymotion'
 
+Plug 'majutsushi/tagbar'
+
 Plug 'liuchengxu/vista.vim'
 
 " Use release branch (Recommend)
@@ -139,12 +150,10 @@ else
 	Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-if has('nvim')
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/defx.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'APZelos/blamer.nvim'
+
+Plug 'wakatime/vim-wakatime'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
