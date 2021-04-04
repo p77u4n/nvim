@@ -1032,3 +1032,8 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
+"""" Ack config
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
