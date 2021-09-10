@@ -76,6 +76,7 @@ Plug 'moll/vim-node', { 'for': 'javascript' } " node support
 "
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'jparise/vim-graphql'
 " Plug 'HerringtonDarkholme/yats.vim' "very laggy
 "Elm
 "Plug 'lambdatoast/elm.vim', { 'for': 'elm' }
@@ -141,6 +142,8 @@ Plug 'liuchengxu/vista.vim'
 " Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'APZelos/blamer.nvim'
+
 Plug 'neoclide/coc-denite'
 if has('nvim')
 	Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -150,10 +153,10 @@ else
 	Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-Plug 'APZelos/blamer.nvim'
-
 Plug 'wakatime/vim-wakatime'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
 
 call plug#end()

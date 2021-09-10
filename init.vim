@@ -134,6 +134,9 @@ hi CocUnderline gui=undercurl term=undercurl
 hi CocErrorHighlight ctermfg=red  guifg=#c4384b gui=undercurl term=undercurl
 hi CocWarningHighlight ctermfg=yellow guifg=#c4ab39 gui=undercurl term=undercurl
 
+
+autocmd FileType python let b:coc_root_patterns = ['pyproject.toml', 'pyrightconfig.json']
+
 " Vim hybrid relative numbering
 :set number relativenumber
 " Auto switch to absolute line number while switch to insert mode
@@ -1030,6 +1033,16 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true
   },
+}
+EOF
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  indent = {
+    enable = true
+  }
 }
 EOF
 
