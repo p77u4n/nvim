@@ -135,7 +135,7 @@ hi CocErrorHighlight ctermfg=red  guifg=#c4384b gui=undercurl term=undercurl
 hi CocWarningHighlight ctermfg=yellow guifg=#c4ab39 gui=undercurl term=undercurl
 
 
-autocmd FileType python let b:coc_root_patterns = ['pyproject.toml', 'pyrightconfig.json']
+autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
 
 " Vim hybrid relative numbering
 :set number relativenumber
@@ -231,6 +231,9 @@ endif
 
 " set a map leader for more key combos
 let mapleader = ','
+
+" save file
+nnoremap <leader><leader> :update<cr>
 
 " remap esc
 inoremap jk <esc>
@@ -483,7 +486,7 @@ autocmd BufReadPost *
 """""""""""""""""""""""""""""""""""""
 " Toggle NERDTree
 "nmap <silent> <leader>k :NERDTreeToggle<cr>
-:nmap <space>e :CocCommand explorer<CR>
+:nmap <silent> <leader>w :CocCommand explorer<CR>
 " expand to the path of the file in the current buffer
 " FZF
 "let g:fzf_layout = { 'down': '~25%' }
@@ -774,66 +777,10 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 "let g:indentLine_setColors = 0
 "
 "
-"" Floating Term
-let s:float_term_border_win = 0
-let s:float_term_win = 0
-function! FloatTerm(...)
-  " Configuration
-  let height = float2nr((&lines - 2) * 0.6)
-  let row = float2nr((&lines - height) / 2)
-  let width = float2nr(&columns * 0.6)
-  let col = float2nr((&columns - width) / 2)
-  " Border Window
-  let border_opts = {
-        \ 'relative': 'editor',
-        \ 'row': row - 1,
-        \ 'col': col - 2,
-        \ 'width': width + 4,
-        \ 'height': height + 2,
-        \ 'style': 'minimal'
-        \ }
-  " Terminal Window
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': row,
-        \ 'col': col,
-        \ 'width': width,
-        \ 'height': height,
-        \ 'style': 'minimal'
-        \ }
-  let top = "╭" . repeat("─", width + 2) . "╮"
-  let mid = "│" . repeat(" ", width + 2) . "│"
-  let bot = "╰" . repeat("─", width + 2) . "╯"
-  let lines = [top] + repeat([mid], height) + [bot]
-  let bbuf = nvim_create_buf(v:false, v:true)
-  call nvim_buf_set_lines(bbuf, 0, -1, v:true, lines)
-  let s:float_term_border_win = nvim_open_win(bbuf, v:true, border_opts)
-  let buf = nvim_create_buf(v:false, v:true)
-  let s:float_term_win = nvim_open_win(buf, v:true, opts)
-  " Styling
-  call setwinvar(s:float_term_border_win, '&winhl', 'Normal:Normal')
-  call setwinvar(s:float_term_win, '&winhl', 'Normal:Normal')
-  if a:0 == 0
-    terminal
-  else
-    call termopen(a:1)
-  endif
-  startinsert
-  " Close border window when terminal window close
-  autocmd TermClose * ++once :bd! | call nvim_win_close(s:float_term_border_win, v:true)
-endfunction
-
-" Open terminal
-nnoremap <Leader>at :call FloatTerm()<CR>
-" Open node REPL
-nnoremap <Leader>an :call FloatTerm('"node"')<CR>
-" Open tig, yes TIG, A FLOATING TIGGGG!!!!!!
-nnoremap <Leader>ag :call FloatTerm('"tig"')<CR>
-
 " Config CoC
 "
 " Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other lugin.
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
@@ -852,12 +799,12 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Remap keys for gotos
+
 nmap <silent> gd :call CocAction('jumpDefinition', 'split')<CR>
 nmap <silent> gdr <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -1050,3 +997,9 @@ EOF
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Other plug-in's settings 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+source ~/.config/nvim/plugin/floaterm.vim
